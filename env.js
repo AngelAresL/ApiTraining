@@ -1,9 +1,10 @@
 import 'dotenv/config';
 
 const {
+  DB_HOST,
   DB_USER,
   DB_PORT,
-  DB_PASWORD,
+  DB_PASSWORD,
   DB_NAME,
 
   SERVER_PORT,
@@ -17,9 +18,10 @@ const {
 } = process.env;
 
 export {
+  DB_HOST,
   DB_USER,
   DB_PORT,
-  DB_PASWORD,
+  DB_PASSWORD,
   DB_NAME,
   SERVER_PORT,
   SERVER_HOST,

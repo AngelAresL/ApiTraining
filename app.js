@@ -7,6 +7,7 @@ app.use(express.json());
 
 //middlewares de morgan o cors
 app.use(morgan('dev'));
+useDb();
 
 //Rutas
 //user register
@@ -27,8 +28,8 @@ app.use(morgan('dev'));
 
 //middlewares de manejo de errores y pagina no encontrada
 
-app.use(notFound);
-app.use(handleError);
+//app.use(notFound);
+//app.use(handleError);
 
 //levantar servidor
 app.listen(SERVER_PORT, () => {
