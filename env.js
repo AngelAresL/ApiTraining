@@ -1,0 +1,31 @@
+import 'dotenv/config';
+
+const {
+  DB_USER,
+  DB_PORT,
+  DB_PASWORD,
+  DB_NAME,
+
+  SERVER_PORT,
+  SERVER_HOST,
+
+  TOKEN_SECRET,
+  SMTP_HOST,
+  SMTP_PORT,
+  SMTP_USER,
+  SMTP_PASS,
+} = process.env;
+
+export {
+  DB_USER,
+  DB_PORT,
+  DB_PASWORD,
+  DB_NAME,
+  SERVER_PORT,
+  SERVER_HOST,
+  TOKEN_SECRET,
+  SMTP_HOST,
+  SMTP_PORT,
+  SMTP_USER,
+  SMTP_PASS,
+};
