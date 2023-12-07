@@ -1,5 +1,5 @@
 import handleError from './handleError.js';
 import notFound from './notFound.js';
-import validateAuth from './validateAuth.js';
+import validateAuth from './validateJWT.js';
 
 export { handleError, notFound, validateAuth };

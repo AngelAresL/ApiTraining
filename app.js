@@ -1,6 +1,10 @@
 import express from 'express';
-import { handleError, notFound } from './src/middlewares/index.js';
+import morgan from "morgan";
+import useDb from './src/db/useDb.js';
+import { handleError, notFound, validateAuth } from './src/middlewares/index.js';
 import { SERVER_PORT,SERVER_HOST } from './env.js';
+import {createTraining,deleteTraining,modifyTraining} from './src/controllers/training/index.js';
+import {login,register} from './src/controllers/users/index.js'
 
 const app = express();
 app.use(express.json());
@@ -12,6 +16,8 @@ useDb();
 //Rutas
 //user register
 //user login
+app.post("/register", register);
+app.post("/login", login);
 
 //rol general
 //training seleccionar todo
@@ -22,9 +28,11 @@ useDb();
 
 //rol admin
 //training create
+ app.post("/training", validateAuth, createTraining )
 //training delete
+app.delete("/training",validateAuth, deleteTraining)
 //training modify (put y path)
-
+app.put("/delete",validateAuth, modifyTraining)
 
 //middlewares de manejo de errores y pagina no encontrada
 
