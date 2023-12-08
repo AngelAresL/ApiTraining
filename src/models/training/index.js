@@ -1,3 +1,4 @@
-import generateError from './generateError.js';
+import generateError from '../../helpers/generateError.js';
+import deleteTrainingById from './deleteTrainingById.js';
 
-export { generateError };
+export { generateError, deleteTrainingById };
