@@ -1,41 +1,28 @@
-import path from 'path';
-import sharp from 'sharp';
-import { v4 as uuidv4 } from 'uuid';
 import {
   insertTraining,
   selectTrainingById,
 } from '../../models/training/index.js';
-import { generateError, createPath } from '../../helpers/index.js';
+import { saveImage } from '../../helpers/index.js';
+
 const createTraining = async (req, res, next) => {
   try {
-    const loggedUserRol = req.auth.rol;
-    const loggedUserId = req.auth.id;
+    // const loggedUserRol = req.auth.rol;
+    const loggedUserId = 1;
     const { name, description, typology, muscle_group } = req.body;
+    const crudeData = req.files;
+
     let photoTrainingName;
-    if (loggedUserRol != 'admin') {
-      generateError(
-        'Necesario credencial de administrador para realizar esta tarea',
-        401
-      );
-    }
+    // if (loggedUserRol != 'admin') {
+    //   generateError(
+    //     'Necesario credencial de administrador para realizar esta tarea',
+    //     401
+    //   );
+    // }
     //Comprueba si existe imagen
     if (req.files && req.files.image) {
-      //Ruta del directorio donde se guardaran las imagenes
-      const photosDirPath = path.resolve(
-        path.dirname(fileURLToPath(import.meta.url)),
-        './uploads'
-      );
-      //Se crea carpeta si no existe
-      await createPath(photosDirPath);
-
-      //Procesa imagen para poder alamcenarla
-      const photoTraining = sharp(req.files.image.data);
-      photoTraining.resize(500);
-
-      //Guardo imagen despues de renombrar imagen
-      const [name, ext] = req.files.image.name.split('.');
-      photoTrainingName = `${uuidv4()}.${ext}`;
-      await image.toFile(path.resolve(photosDirPath, photoTrainingName));
+      console.log('si entra');
+      //llama a funcion de guaradar imagen
+      photoTrainingName = await saveImage(crudeData);
     }
 
     const insertNewIdTraining = await insertTraining({

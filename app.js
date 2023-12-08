@@ -39,7 +39,7 @@ app.post('/login', login);
 
 //rol admin
 //training create
-app.post('/training', validateAuth, createTraining);
+app.post('/training', validateAuth,createTraining);
 //training delete
 app.delete('/training', validateAuth, deleteTraining);
 //training modify (put y path)
