@@ -1,3 +1,4 @@
-import generateError from './generateError.js';
+import insertTraining from './insertTraining.js';
+import selectTrainingById from './selectTrainingById.js';
 
-export { generateError };
+export { insertTraining, selectTrainingById };
