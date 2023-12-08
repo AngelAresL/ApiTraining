@@ -39,7 +39,7 @@ app.post('/login', login);
 
 //rol admin
 //training create
-app.post('/training', validateAuth,createTraining);
+app.post('/training', createTraining);
 //training delete
 app.delete('/training', validateAuth, deleteTraining);
 //training modify (put y path)
@@ -48,7 +48,7 @@ app.put('/training', validateAuth, modifyTraining);
 //middlewares de manejo de errores y pagina no encontrada
 
 //app.use(notFound);
-//app.use(handleError);
+app.use(handleError);
 
 //levantar servidor
 app.listen(SERVER_PORT, () => {

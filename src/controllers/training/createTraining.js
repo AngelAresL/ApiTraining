@@ -1,14 +1,30 @@
+import Joi from 'joi';
 import {
   insertTraining,
   selectTrainingById,
 } from '../../models/training/index.js';
-import { saveImage } from '../../helpers/index.js';
+import { saveImage, generateError } from '../../helpers/index.js';
 
 const createTraining = async (req, res, next) => {
   try {
     // const loggedUserRol = req.auth.rol;
     const loggedUserId = 1;
     const { name, description, typology, muscle_group } = req.body;
+    const schema = Joi.object().keys({
+      name: Joi.string().max(50).required(),
+      description: Joi.string().max(200).required(),
+      typology: Joi.string().max(50).required(),
+      muscle_group: Joi.string().max(50).required(),
+    });
+    const validation = schema.validate({
+      name,
+      description,
+      typology,
+      muscle_group,
+    });
+    if (validation.error) {
+      generateError(validation.error.message, 400);
+    }
     const crudeData = req.files;
 
     let photoTrainingName;
