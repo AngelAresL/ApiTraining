@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import fileUpload from 'express-fileupload';
 import useDb from './src/db/useDb.js';
 import {
   handleError,
@@ -16,6 +17,9 @@ import { login, register } from './src/controllers/users/index.js';
 
 const app = express();
 app.use(express.json());
+
+//middleware de fileupolad
+app.use(fileUpload());
 
 //middlewares de morgan o cors
 app.use(morgan('dev'));
@@ -45,6 +49,7 @@ app.put('/training', validateAuth, modifyTraining);
 //middlewares de manejo de errores y pagina no encontrada
 
 app.use(notFound);
+
 app.use(handleError);
 
 //levantar servidor
