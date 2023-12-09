@@ -8,13 +8,16 @@
     "dev": "nodemon src/app.js",
     "initDb": "node src/db/initDb.js",
     "dropDb": "node src/db/dropDb.js",
-    "resetDb": "node src/db/dropDb.js && node src/db/initDb.js"
+    "resetDb": "node src/db/dropDb.js && node src/db/initDb.js",
+    "populateDb": "node src/db/populateDb.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.23.3",
     "eslint": "^8.55.0",
+    "eslint-plugin-babel": "^5.3.1",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.2",
     "prettier": "^3.1.0"
@@ -25,10 +28,13 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.3",
+    "joi": "^17.11.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.5",
     "nanoid": "^5.0.4",
     "nodemailer": "^6.9.7",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.0",
+    "url": "^0.11.3",
+    "uuid": "^9.0.1"
   }
 }
