@@ -1,4 +1,4 @@
-import Joi from "@hapi/joi";
+import Joi from 'joi';
 import bcrypt from 'bcrypt';
 import { insertUser, selectUserByEmail } from '../../models/users/index.js';
 import { generateError } from '../../helpers/index.js';
@@ -18,7 +18,7 @@ const register = async (req, res, next) => {
     const { error, value } = schema.validate(req.body);
 
     if (error) {
-      generateError('Error en la validación de datos',400);
+      generateError('Error en la validación de datos', 400);
     }
 
     // Desestructuro los datos validados

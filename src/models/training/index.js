@@ -1,4 +1,5 @@
 import insertTraining from './insertTraining.js';
 import selectTrainingById from './selectTrainingById.js';
+import deleteTrainingById from './deleteTrainingById.js';
 
-export { insertTraining, selectTrainingById };
+export { insertTraining, selectTrainingById, deleteTrainingById };
