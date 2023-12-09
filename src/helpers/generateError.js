@@ -1,6 +1,6 @@
 const generateError = (msg, httpStatus) => {
   const error = new Error(msg);
-  error.httpStatus = httpStatus;
+  error.statusCode = httpStatus;
 
   throw error;
 };

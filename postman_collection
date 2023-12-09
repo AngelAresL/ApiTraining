@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "c198fea2-189d-410e-be95-8c72e1a91d7d",
+		"name": "API-training",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31342376"
+	},
+	"item": [
+		{
+			"name": "REGISTER",
+			"request": {
+				"auth": {
+					"type": "inherit",
+					"inherit": {}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"patri\",\n    \"email\": \"patricialojo86@gmail.com\",\n    \"password\": \"123456\",\n    \"rol\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/register"
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"auth": {
+					"type": "inherit",
+					"inherit": {}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"patricialojo86@gmail.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3001/login"
+			},
+			"response": []
+		},
+		{
+			"name": "CREATETRAINING",
+			"request": {
+				"auth": {
+					"type": "inherit",
+					"inherit": {}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInJvbCI6ImFkbWluIiwiaWF0IjoxNzAyMDUxNTM3LCJleHAiOjE3MDQ2NDM1Mzd9.oPcjCaXroJQMWwGFARmbeycRl9APjctrPzfqeJeCeaM"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "C:\\Users\\Luis\\Desktop\\Memes prog\\soyprogramador1.png"
+						},
+						{
+							"key": "name",
+							"value": "sadada",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "asdsaasfa",
+							"type": "text"
+						},
+						{
+							"key": "typology",
+							"value": "asfasdfadfadf",
+							"type": "text"
+						},
+						{
+							"key": "muscle_group",
+							"value": "aasdasd",
+							"type": "text"
+						}
+					]
+				},
+				"url": "localhost:3001/training"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETETRAINING",
+			"request": {
+				"auth": {
+					"type": "inherit",
+					"inherit": {}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:3001/training/2"
+			},
+			"response": []
+		}
+	]
+}
