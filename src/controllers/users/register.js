@@ -1,7 +1,7 @@
-import Joi from 'joi';
+import Joi from "@hapi/joi";
 import bcrypt from 'bcrypt';
 import { insertUser, selectUserByEmail } from '../../models/users/index.js';
-import generateError from '../../helpers/generateError.js';
+import { generateError } from '../../helpers/index.js';
 import sendMailUtil from '../../helpers/sendMailUtil.js';
 
 //  esquema de validación con Joi
@@ -18,10 +18,7 @@ const register = async (req, res, next) => {
     const { error, value } = schema.validate(req.body);
 
     if (error) {
-      return res.status(400).json({
-        error: 'Error en la validación de datos',
-        details: error.details,
-      });
+      generateError('Error en la validación de datos',400);
     }
 
     // Desestructuro los datos validados
@@ -31,16 +28,14 @@ const register = async (req, res, next) => {
     const emailExists = await selectUserByEmail(email);
 
     if (emailExists) {
-      return res.status(400).json({
-        error: 'Ya existe un usuario con este email 😥',
-      });
+      generateError('Ya existe un usuario con este email 😥', 400);
     }
 
     // Genero el hash de la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Inserto el usuario en la base de datos
-    const insertId = await insertUser({ name, email, hashedPassword, rol });
+    const insertId = await insertUser(name, email, hashedPassword, rol);
 
     // Configuro el asunto y cuerpo del correo electrónico
     const emailSubject = 'Gracias por registrarte en nuestra plataforma';
@@ -61,4 +56,3 @@ const register = async (req, res, next) => {
 };
 
 export default register;
-
