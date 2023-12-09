@@ -1,4 +1,4 @@
-//import insertUser from "./insertUser.js";
-import selectUserByEmail from "./selectUserByEmail.js";
+import insertUser from './insertUser.js';
+import selectUserByEmail from './selectUserByEmail.js'
 
-export { selectUserByEmail };
+export {insertUser,selectUserByEmail};

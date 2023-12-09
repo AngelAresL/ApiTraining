@@ -32,7 +32,7 @@ app.post("/login", login);
 //training delete
 app.delete("/training",validateAuth, deleteTraining)
 //training modify (put y path)
-app.put("/delete",validateAuth, modifyTraining)
+app.put("/training",validateAuth, modifyTraining)
 
 //middlewares de manejo de errores y pagina no encontrada
 
