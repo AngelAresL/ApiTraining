@@ -1,5 +1,6 @@
-import jwt from "jsonwebtoken";
-import { generateError } from "../helpers/index.js";
+import jwt from 'jsonwebtoken';
+import { generateError } from '../helpers/index.js';
+import { TOKEN_SECRET } from '../../env.js';
 
 const validateAuth = (req, res, next) => {
   try {
@@ -9,18 +10,18 @@ const validateAuth = (req, res, next) => {
       generateError("El header 'authorization' es requerido", 401);
     }
 
-    const [tokenType, token] = authorization.split(" ");
+    const [tokenType, token] = authorization.split(' ');
 
-    if (tokenType !== "Bearer") {
+    if (tokenType !== 'Bearer') {
       generateError("El token debe ser de tipo 'Bearer'", 400);
     }
 
     let tokenPayload;
 
     try {
-      tokenPayload = jwt.verify(token, process.env.JWT_SECRET);
+      tokenPayload = jwt.verify(token, TOKEN_SECRET);
     } catch (error) {
-      generateError("El token es inválido", 400);
+      generateError('El token es inválido', 400);
     }
 
     req.auth = tokenPayload;

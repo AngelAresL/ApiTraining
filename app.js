@@ -1,10 +1,18 @@
 import express from 'express';
-import morgan from "morgan";
+import morgan from 'morgan';
 import useDb from './src/db/useDb.js';
-import { handleError, notFound, validateAuth } from './src/middlewares/index.js';
-import { SERVER_PORT,SERVER_HOST } from './env.js';
-import {createTraining,deleteTraining,modifyTraining} from './src/controllers/training/index.js';
-import {login,register} from './src/controllers/users/index.js'
+import {
+  handleError,
+  notFound,
+  validateAuth,
+} from './src/middlewares/index.js';
+import { SERVER_PORT, SERVER_HOST } from './env.js';
+import {
+  createTraining,
+  deleteTraining,
+  modifyTraining,
+} from './src/controllers/training/index.js';
+import { login, register } from './src/controllers/users/index.js';
 
 const app = express();
 app.use(express.json());
@@ -16,8 +24,8 @@ useDb();
 //Rutas
 //user register
 //user login
-app.post("/register", register);
-app.post("/login", login);
+app.post('/register', register);
+app.post('/login', login);
 
 //rol general
 //training seleccionar todo
@@ -25,19 +33,19 @@ app.post("/login", login);
 //dar like
 //dar favs
 
-
 //rol admin
 //training create
- app.post("/training", validateAuth, createTraining )
+app.post('/training', validateAuth, createTraining);
 //training delete
-app.delete("/training",validateAuth, deleteTraining)
+// app.delete("/training", validateAuth, deleteTraining)
+app.delete('/training/:idtraining', validateAuth, deleteTraining);
 //training modify (put y path)
-app.put("/training",validateAuth, modifyTraining)
+app.put('/training', validateAuth, modifyTraining);
 
 //middlewares de manejo de errores y pagina no encontrada
 
-//app.use(notFound);
-//app.use(handleError);
+app.use(notFound);
+app.use(handleError);
 
 //levantar servidor
 app.listen(SERVER_PORT, () => {
