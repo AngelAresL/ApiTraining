@@ -7,9 +7,12 @@ import { saveImage, generateError } from '../../helpers/index.js';
 
 const createTraining = async (req, res, next) => {
   try {
-    // const loggedUserRol = req.auth.rol;
-    const loggedUserId = 1;
+    const loggedUserRol = req.auth.rol;
+    const loggedUserId = req.auth.id;
+    const crudeData = req.files;
+    let photoTrainingName;
     const { name, description, typology, muscle_group } = req.body;
+    //Validacion de Joi
     const schema = Joi.object().keys({
       name: Joi.string().max(50).required(),
       description: Joi.string().max(200).required(),
@@ -25,15 +28,13 @@ const createTraining = async (req, res, next) => {
     if (validation.error) {
       generateError(validation.error.message, 400);
     }
-    const crudeData = req.files;
 
-    let photoTrainingName;
-    // if (loggedUserRol != 'admin') {
-    //   generateError(
-    //     'Necesario credencial de administrador para realizar esta tarea',
-    //     401
-    //   );
-    // }
+    if (loggedUserRol != 'admin') {
+      generateError(
+        'Necesario credencial de administrador para realizar esta tarea',
+        401
+      );
+    }
     //Comprueba si existe imagen
     if (req.files && req.files.image) {
       console.log('si entra');

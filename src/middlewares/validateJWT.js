@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import { generateError } from "../helpers/index.js";
+import { TOKEN_SECRET } from "../../env.js";
 
 const validateAuth = (req, res, next) => {
   try {
@@ -18,7 +19,7 @@ const validateAuth = (req, res, next) => {
     let tokenPayload;
 
     try {
-      tokenPayload = jwt.verify(token, process.env.JWT_SECRET);
+      tokenPayload = jwt.verify(token, TOKEN_SECRET);
     } catch (error) {
       generateError("El token es inválido", 400);
     }
