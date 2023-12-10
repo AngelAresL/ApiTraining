@@ -1,5 +1,5 @@
 import  {generateError}  from "../../helpers/index.js";
-import {insertLike} from "../../models/training/index.js";
+import {insertLike, selectLikeById} from "../../models/training/index.js";
 
 
 
@@ -14,12 +14,14 @@ try{
 
     //Insertamos id de usuario logeado e id de training en la tabla likes        
     const likeId = await insertLike(trainingId, loggedUserId);
+    console.log(likeId);
 
     if(!likeId){
         generateError('Ha ocurrido un error dando like', 400);
     }
     //Comprobamos que se añadió el like a la tabla
     const result = await selectLikeById(likeId);
+    console.log(result);
     if(!result){
         generateError('Ha ocurrido un error consultando el likeId', 400);
     }
@@ -30,7 +32,7 @@ try{
     });
 
 }catch(error){
-    next(errr);
+    next(error);
 }
 
 

@@ -1,13 +1,13 @@
 import pool from '../../db/pool.js';
 
-const selectLikeById = async (id) => {
+const selectLikeById = async (likeId) => {
 
-  const [like] = await pool.query(
+  const [result] = await pool.query(
     'SELECT * FROM likes WHERE id = ?;',
-    [id]
+    [likeId]
   );
 
-  return like;
+  return result;
 };
 
 export default selectLikeById;

@@ -3,12 +3,14 @@ import morgan from 'morgan';
 import fileUpload from 'express-fileupload';
 import useDb from './src/db/useDb.js';
 import {
+
   handleError,
   notFound,
   validateAuth,
 } from './src/middlewares/index.js';
 import { SERVER_PORT, SERVER_HOST } from './env.js';
 import {
+  addLike,
   createTraining,
   deleteTraining,
   modifyTraining,
