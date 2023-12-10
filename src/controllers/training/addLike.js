@@ -22,6 +22,10 @@ try{
         }
 
     }
+    const repeatedLike = (loggedUserId, trainingId);
+    if (repeatedLike){
+        generateError ('Este usuario ya dio like a este ejercicio',400);
+    }
 //-------------------------------------------------------------------------------------------
 
 
