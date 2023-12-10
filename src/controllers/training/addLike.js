@@ -9,8 +9,8 @@ try{
     //Cogemos el id de entrenamiento que se para por parametro
     const trainingId = req.params.idtraining;
     //Cogemos el id del payload de usuario logeado
-    // const loggedUserId = req.auth.id;
-    const loggedUserId = 1;
+    const loggedUserId = req.auth.id;
+    
 
     //Insertamos id de usuario logeado e id de training en la tabla likes        
     const likeId = await insertLike(trainingId, loggedUserId);
