@@ -35,6 +35,7 @@ app.post('/login', login);
 //training seleccionar todo
 //training seleccionar por ID
 //dar like
+app.post('/like/:idtraining', addLike);
 //dar favs
 
 //rol admin
