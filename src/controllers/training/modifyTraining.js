@@ -1,46 +1,72 @@
 import generateError from '../../helpers/generateError.js';
 import pool from '../../db/pool.js';
-
+import { selectTrainingById } from '../../models/training/index.js';
+import modifyTrainingById from '../../models/training/modifyTrainingById.js';
 
 const modifyTraining = async (req, res, next) => {
   try {
-    const trainingId = req.params.id;
-    const { name, description, photo, typology: typology, muscle_group, id_user } = req.body;
+    const trainingId = req.params.idtraining;
+    const { name, description, photo, typology, muscle_group, id_user } =
+      req.body;
 
-    //Comprobamos si el id de entrenamiento existe
-    const rowExists =  await pool.query("SELECT * FROM training WHERE id = ?;", [trainingId]);
-
-    if (!rowExists) {
-      generateError("El entrenamiento no existe", 404); 
-    }
-
-    //Comprobamos si el usuario es admin o normal
     const rolUser = req.auth.rol;
-  
-    if (rolUser === "normal") {
-      generateError("Debes de ser administrador para modificar entrenamientos", 403);
+
+    if (rolUser !== 'admin') {
+      generateError(
+        'Debes ser administrador para modificar entrenamientos',
+        403
+      );
     }
 
-    console.log(name, description, photo, typology, muscle_group, id_user, trainingId);
+    const existingTraining = await selectTrainingById(trainingId);
 
-    //Actualizamos los datos 
-    const [{changes}]= await pool.query(`
-    UPDATE training SET name=?, description=?, photo=?, typology=?, muscle_group=?, id_user=? WHERE id=?`,
-    [name, description, photo, typology, muscle_group, id_user, trainingId]
+    if (!existingTraining) {
+      generateError('El entrenamiento no existe', 404);
+    }
+
+    const {
+      name: existingName,
+      description: existingDescription,
+      photo: existingPhoto,
+      typology: existingTypology,
+      muscle_group: existingMuscleGroup,
+      id_user: existingUserId,
+    } = existingTraining;
+
+    // Update de training en la base de datos
+    const updatedTraining = await modifyTrainingById(
+      name,
+      description,
+      photo,
+      typology,
+      muscle_group,
+      id_user,
+      trainingId
     );
+    // if (updatedTraining.changedRows === 0) {
+    //   generateError('Hubo un problema al actualizar el entrenamiento', 500);
+    // }
 
-    if (changes === 0) {
-      generateError("Debes cambiar algún dato del entrenamiento", 400);
-    }
+    const updateChanges = await selectTrainingById(trainingId);
+    const hasChanged =
+      updateChanges.name !== existingTraining.name ||
+      updateChanges.description !== existingTraining.description ||
+      updateChanges.photo !== existingTraining.photo ||
+      updateChanges.typology !== existingTraining.typology ||
+      updateChanges.muscle_group !== existingTraining.muscle_group ||
+      updateChanges.id_user !== existingTraining.id_user;
+
     
-    //const updateTraining= await selectTrainingById(trainingId);
-    const updatedTraining = await pool.query("SELECT * FROM training WHERE id = ?;", [trainingId]);
+    console.log(updateChanges, existingTraining);
 
-    res.status(200).json({ 
-      message: "Entrenamiento actualizado correctamente",
-      data: updatedTraining
-   });
+    if (!hasChanged) {
+      generateError('Debes cambiar algún dato del entrenamiento', 400);
+    }
 
+    res.status(200).json({
+      message: 'Entrenamiento actualizado correctamente',
+      data: updatedTraining,
+    });
   } catch (error) {
     next(error);
   }

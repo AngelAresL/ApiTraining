@@ -44,7 +44,7 @@ app.post('/training', validateAuth, createTraining);
 // app.delete("/training", validateAuth, deleteTraining)
 app.delete('/training/:idtraining', validateAuth, deleteTraining);
 //training modify (put y path)
-app.put('/training', validateAuth, modifyTraining);
+app.put('/training/:idtraining', validateAuth, modifyTraining);
 
 //middlewares de manejo de errores y pagina no encontrada
 
