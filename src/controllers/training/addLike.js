@@ -1,5 +1,5 @@
 import  {generateError}  from "../../helpers/index.js";
-import {insertLike, selectLikeById} from "../../models/training/index.js";
+import {insertLike, selectLikeById, repeatLike, selectTrainingById} from "../../models/training/index.js";
 
 
 
@@ -11,23 +11,20 @@ try{
     //Cogemos el id del payload de usuario logeado
     const loggedUserId = req.auth.id;
     
+
 //---------------------------------------------------------------------------------------------
-    //Necesito saber cuantos registros hay, y despues lanzar error si se cumple el if
-    for (let i=1; i<15; i++){
-        let [row] = await selectLikeById(i);
-        console.log(row.id_user,loggedUserId, row.id_training,trainingId);
-
-        if( row.id_user===loggedUserId && row.id_training===trainingId){
-            generateError('Este entrenamiento ya tiene like de este usuario', 400);
-        }
-
+    //Comprobamos si el idtraining existe
+    const trainingExists = await selectTrainingById(trainingId);
+    if(!trainingExists){
+        generateError('El entrenamiento seleccionado no existe', 400);
     }
-    const repeatedLike = (loggedUserId, trainingId);
-    if (repeatedLike){
+
+    //Comprobamos si el usuario ya dio like a un entrenamiento
+    const repeatedLike = await repeatLike(loggedUserId, trainingId); 
+    if (repeatedLike){        
         generateError ('Este usuario ya dio like a este ejercicio',400);
-    }
+    }    
 //-------------------------------------------------------------------------------------------
-
 
     //Insertamos id de usuario logeado e id de training en la tabla likes        
     const likeId = await insertLike(trainingId, loggedUserId);
@@ -37,7 +34,7 @@ try{
         generateError('Ha ocurrido un error dando like', 400);
     }
     //Comprobamos que se añadió el like a la tabla
-    const result = await selectLikeById(likeId);
+    const [result] = await selectLikeById(likeId);
     //console.log(result);
     if(!result){
         generateError('Ha ocurrido un error consultando el likeId', 400);
