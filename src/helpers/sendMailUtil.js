@@ -2,6 +2,7 @@
 import nodemailer from 'nodemailer';
 // Obtenemos las variables de entorno necesarias.
 import { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } from '../../env.js';
+import generateError from './generateError.js';
 
 //Preparando el transporte de nuestro correo
 const transport = nodemailer.createTransport({
@@ -25,7 +26,7 @@ const sendMailUtil = async (email, subject, body) => {
     };
     await transport.sendMail(mailOptions);
   } catch (error) {
-    next(error);
+    generateError('Error durante el envio del email', 111);
   }
 };
 

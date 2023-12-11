@@ -4,4 +4,10 @@ import createPathIfNotExist from './createPath.js';
 import saveImage from './saveImage.js';
 import validateJoiTraining from './validateJoiTraining.js';
 
-export { generateError, sendMailUtil, createPathIfNotExist, saveImage };
+export {
+  generateError,
+  sendMailUtil,
+  createPathIfNotExist,
+  saveImage,
+  validateJoiTraining,
+};

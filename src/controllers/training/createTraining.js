@@ -27,7 +27,7 @@ const createTraining = async (req, res, next) => {
       //llama a funcion de guaradar imagen
       photoTrainingName = await saveImage(crudeData);
     } else {
-      photoTrainingName = 'defaultWoroutAvatar.jpg';
+      photoTrainingName = 'defaultWorkoutAvatar.jpg';
     }
 
     const insertNewIdTraining = await insertTraining({

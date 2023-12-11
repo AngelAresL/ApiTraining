@@ -15,6 +15,10 @@ import {
   searchTraining,
   searchTrainingById,
 } from './src/controllers/training/index.js';
+import {
+  forgotPassword,
+  resetPassword,
+} from './src/controllers/password/index.js';
 import { login, register } from './src/controllers/users/index.js';
 
 const app = express();
@@ -49,6 +53,10 @@ app.post('/training', validateAuth, createTraining);
 app.delete('/training/:idtraining', validateAuth, deleteTraining);
 //training modify (put y path)
 app.put('/training/:idtraining', validateAuth, modifyTraining);
+
+//olvido de password
+app.post('/loginForgot', forgotPassword);
+app.patch('/loginReset', validateAuth, resetPassword);
 
 //middlewares de manejo de errores y pagina no encontrada
 
