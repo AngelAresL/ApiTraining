@@ -15,6 +15,11 @@ import {
   deleteLike,
   deleteTraining,
   modifyTraining,
+  searchTraining,
+  searchTrainingById,
+  addFav,
+  removeFav,
+  getFav
 } from './src/controllers/training/index.js';
 import { login, register } from './src/controllers/users/index.js';
 
@@ -35,12 +40,20 @@ app.post('/register', register);
 app.post('/login', login);
 
 //rol general
-//training seleccionar todo
+//training seleccionar todo y/o por tipologia y musculo
+app.get('/training', validateAuth, searchTraining);
 //training seleccionar por ID
+app.get('/training/:idtraining', validateAuth, searchTrainingById);
 //dar like
 app.post('/like/:idtraining',validateAuth, addLike);
 app.delete('/deleteLike/:idtraining', validateAuth, deleteLike);
 //dar favs
+app.post('/fav/:idtraining', validateAuth, addFav);
+//quitar favs
+app.delete('/fav/:idtraining', validateAuth, removeFav);
+
+//listar todos los favs
+app.get('/fav', validateAuth, getFav);
 
 //rol admin
 //training create
@@ -49,7 +62,7 @@ app.post('/training', validateAuth, createTraining);
 // app.delete("/training", validateAuth, deleteTraining)
 app.delete('/training/:idtraining', validateAuth, deleteTraining);
 //training modify (put y path)
-app.put('/training', validateAuth, modifyTraining);
+app.put('/training/:idtraining', validateAuth, modifyTraining);
 
 //middlewares de manejo de errores y pagina no encontrada
 

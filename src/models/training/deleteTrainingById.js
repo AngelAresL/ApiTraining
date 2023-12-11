@@ -1,5 +1,5 @@
 import pool from '../../db/pool.js';
-import generateError from '../../helpers/generateError.js';
+import { generateError } from '../../helpers/index.js';
 const deleteTrainingById = async (id) => {
   try {
     const query = 'DELETE FROM training WHERE id = ?';
@@ -13,7 +13,7 @@ const deleteTrainingById = async (id) => {
       message: 'Entreno borrado con éxito',
     };
   } catch (error) {
-    throw generateError('Error interno del servidor al borrar el entreno', 500);
+    throw generateError(error, error.statusCode || 500);
   }
 };
 export default deleteTrainingById;
