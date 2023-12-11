@@ -10,7 +10,7 @@ const addFavById = async (id_user, id_training) => {
 
     return fav;
   } catch (error) {
-    throw generateError('Error interno del servidor', 500);
+    throw generateError(error, error.statusCode || 500);
   }
 };
 

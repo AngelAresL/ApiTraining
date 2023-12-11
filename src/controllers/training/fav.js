@@ -2,7 +2,7 @@ import { generateError } from '../../helpers/index.js';
 import {
   addFavById,
   removeFavById,
-  selectFavById,
+  getFavByUser,
 } from '../../models/training/index.js';
 
 // Add a workout to favorites
@@ -11,8 +11,13 @@ const addFav = async (req, res, next) => {
     const rol = req.auth.rol;
     const trainingId = req.params.idtraining;
     const loggedUserId = req.auth.id;
-    const [addFav] = await addFavById(trainingId, loggedUserId);
+
     const numRegex = /^\d+$/;
+    // const [existingFav] = await getFavByUser(trainingId, loggedUserId);
+
+    // if (existingFav.length > 0) {
+    //   throw generateError('Este ejercicio ya está en favoritos', 400);
+    // }
 
     if (!numRegex.test(trainingId)) {
       throw generateError('trainingId no válido.', 404);
@@ -25,10 +30,12 @@ const addFav = async (req, res, next) => {
         401
       );
     }
+    await addFavById(trainingId, loggedUserId);
+    const fav = await getFavByUser(loggedUserId);
 
     res.status(200).json({
       message: 'Entrenamiento añadido a favoritos con éxito.',
-      fav_count: addFav.insertId,
+      fav_list: fav[0],
     });
   } catch (error) {
     next(error);
@@ -41,8 +48,11 @@ const removeFav = async (req, res, next) => {
     const rol = req.auth.rol;
     const trainingId = req.params.idtraining;
     const loggedUserId = req.auth.id;
-    const [removeFav] = await removeFavById(trainingId, loggedUserId);
     const numRegex = /^\d+$/;
+    // const [existingFav] = await getFavByUser(trainingId, loggedUserId);
+    // if (existingFav.length === 0) {
+    //   throw generateError('Este ejercicio no está en favoritos', 400);
+    // }
 
     if (!numRegex.test(trainingId)) {
       throw generateError('trainingId no válido.', 404);
@@ -55,10 +65,12 @@ const removeFav = async (req, res, next) => {
         401
       );
     }
+    await removeFavById(trainingId, loggedUserId);
+    const fav = await getFavByUser(loggedUserId);
 
     res.status(200).json({
       message: 'Entrenamiento borrado de favoritos con éxito.',
-      fav_count: removeFav.insertId,
+      fav_list: fav[0],
     });
   } catch (error) {
     next(error);
@@ -66,17 +78,10 @@ const removeFav = async (req, res, next) => {
 };
 
 // Favorites list
-const selectFav = async (req, res, next) => {
+const getFav = async (req, res, next) => {
   try {
     const rol = req.auth.rol;
-    const trainingId = req.params.idtraining;
     const loggedUserId = req.auth.id;
-    const [selectFav] = await selectFavById(trainingId, loggedUserId);
-    const numRegex = /^\d+$/;
-
-    if (!numRegex.test(trainingId)) {
-      throw generateError('trainingId no válido.', 404);
-    }
 
     // Comprobar que el usuario del token es admin.
     if (rol !== 'normal') {
@@ -85,14 +90,14 @@ const selectFav = async (req, res, next) => {
         401
       );
     }
+    const [getFav] = await getFavByUser(loggedUserId);
 
     res.status(200).json({
       message: 'Listado de favoritos.',
-      fav_count: selectFav,
+      fav_list: getFav,
     });
-    console.log(selectFav);
   } catch (error) {
     next(error);
   }
 };
-export { addFav, removeFav, selectFav };
+export { addFav, removeFav, getFav };

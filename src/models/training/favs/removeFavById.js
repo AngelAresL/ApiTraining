@@ -1,14 +1,16 @@
 import pool from '../../../db/pool.js';
 import { generateError } from '../../../helpers/index.js';
 
-const removeFavById = async (req, res, next) => {
+const removeFavById = async (id_user, id_training) => {
   try {
-    res.send({
-      status: 'error',
-      message: 'no implementada',
-    });
+    const delFav = await pool.query(
+      'DELETE FROM favorites WHERE id_training = ? AND id_user = ?',
+      [id_user, id_training]
+    );
+
+    return delFav;
   } catch (error) {
-    next(error);
+    throw generateError(error, error.statusCode || 500);
   }
 };
 

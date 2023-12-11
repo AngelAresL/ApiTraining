@@ -13,7 +13,7 @@ const deleteTrainingById = async (id) => {
       message: 'Entreno borrado con éxito',
     };
   } catch (error) {
-    throw generateError('Error interno del servidor al borrar el entreno', 500);
+    throw generateError(error, error.statusCode || 500);
   }
 };
 export default deleteTrainingById;

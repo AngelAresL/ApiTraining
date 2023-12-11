@@ -1,7 +1,7 @@
 import createTraining from './createTraining.js';
 import deleteTraining from './deleteTraining.js';
 import modifyTraining from './modifyTraining.js';
-import { addFav, removeFav, selectFav } from './fav.js';
+import { addFav, removeFav, getFav } from './fav.js';
 
 export {
   createTraining,
@@ -9,5 +9,5 @@ export {
   modifyTraining,
   addFav,
   removeFav,
-  selectFav,
+  getFav,
 };
