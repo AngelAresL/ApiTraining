@@ -12,6 +12,9 @@ import {
   createTraining,
   deleteTraining,
   modifyTraining,
+  addFav,
+  removeFav,
+  getFav,
 } from './src/controllers/training/index.js';
 import { login, register } from './src/controllers/users/index.js';
 
@@ -36,6 +39,12 @@ app.post('/login', login);
 //training seleccionar por ID
 //dar like
 //dar favs
+app.post('/fav/:idtraining', validateAuth, addFav);
+//quitar favs
+app.delete('/fav/:idtraining', validateAuth, removeFav);
+
+//listar todos los favs
+app.get('/fav', validateAuth, getFav);
 
 //rol admin
 //training create
