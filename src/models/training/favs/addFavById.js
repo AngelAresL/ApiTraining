@@ -1,14 +1,16 @@
 import pool from '../../../db/pool.js';
 import { generateError } from '../../../helpers/index.js';
 
-const addFavById = async (req, res, next) => {
+const addFavById = async (id_user, id_training) => {
   try {
-    res.send({
-      status: 'error',
-      message: 'no implementada',
-    });
+    const fav = await pool.query(
+      'INSERT INTO favorites ( id_training, id_user) VALUES (?, ?);',
+      [id_user, id_training]
+    );
+
+    return fav;
   } catch (error) {
-    next(error);
+    throw generateError('Error interno del servidor', 500);
   }
 };
 

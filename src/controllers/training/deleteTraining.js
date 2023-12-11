@@ -7,9 +7,6 @@ const deleteTraining = async (req, res, next) => {
     const trainingId = req.params.idtraining;
     const numRegex = /^\d+$/;
 
-    // Ejemplo de uso
-    console.log();
-
     if (!numRegex.test(trainingId)) {
       throw generateError('trainingId no válido', 404);
     }
