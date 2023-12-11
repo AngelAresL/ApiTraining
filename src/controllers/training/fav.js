@@ -5,7 +5,7 @@ import {
   getFavByUser,
 } from '../../models/training/index.js';
 
-// Add a workout to favorites
+// Añadir un entreno a favoritos
 const addFav = async (req, res, next) => {
   try {
     const rol = req.auth.rol;
@@ -13,11 +13,6 @@ const addFav = async (req, res, next) => {
     const loggedUserId = req.auth.id;
 
     const numRegex = /^\d+$/;
-    // const [existingFav] = await getFavByUser(trainingId, loggedUserId);
-
-    // if (existingFav.length > 0) {
-    //   throw generateError('Este ejercicio ya está en favoritos', 400);
-    // }
 
     if (!numRegex.test(trainingId)) {
       throw generateError('trainingId no válido.', 404);
@@ -30,29 +25,25 @@ const addFav = async (req, res, next) => {
         401
       );
     }
-    await addFavById(trainingId, loggedUserId);
-    const fav = await getFavByUser(loggedUserId);
+    await addFavById(loggedUserId, trainingId);
+    const [fav] = await getFavByUser(loggedUserId);
 
     res.status(200).json({
       message: 'Entrenamiento añadido a favoritos con éxito.',
-      fav_list: fav[0],
+      fav_list: fav,
     });
   } catch (error) {
     next(error);
   }
 };
 
-// Remove a workout from favorites
+// Borrar el entreno de favoritos
 const removeFav = async (req, res, next) => {
   try {
     const rol = req.auth.rol;
     const trainingId = req.params.idtraining;
     const loggedUserId = req.auth.id;
     const numRegex = /^\d+$/;
-    // const [existingFav] = await getFavByUser(trainingId, loggedUserId);
-    // if (existingFav.length === 0) {
-    //   throw generateError('Este ejercicio no está en favoritos', 400);
-    // }
 
     if (!numRegex.test(trainingId)) {
       throw generateError('trainingId no válido.', 404);
@@ -65,19 +56,19 @@ const removeFav = async (req, res, next) => {
         401
       );
     }
-    await removeFavById(trainingId, loggedUserId);
-    const fav = await getFavByUser(loggedUserId);
+    await removeFavById(loggedUserId, trainingId);
+    const [fav] = await getFavByUser(loggedUserId);
 
     res.status(200).json({
       message: 'Entrenamiento borrado de favoritos con éxito.',
-      fav_list: fav[0],
+      fav_list: fav,
     });
   } catch (error) {
     next(error);
   }
 };
 
-// Favorites list
+// Lista de favoritos
 const getFav = async (req, res, next) => {
   try {
     const rol = req.auth.rol;
