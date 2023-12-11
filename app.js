@@ -12,6 +12,7 @@ import { SERVER_PORT, SERVER_HOST } from './env.js';
 import {
   addLike,
   createTraining,
+  deleteLike,
   deleteTraining,
   modifyTraining,
 } from './src/controllers/training/index.js';
@@ -38,6 +39,7 @@ app.post('/login', login);
 //training seleccionar por ID
 //dar like
 app.post('/like/:idtraining',validateAuth, addLike);
+app.delete('/deleteLike/:idtraining', validateAuth, deleteLike);
 //dar favs
 
 //rol admin
