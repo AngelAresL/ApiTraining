@@ -12,6 +12,8 @@ import {
   createTraining,
   deleteTraining,
   modifyTraining,
+  searchTraining,
+  searchTrainingById,
 } from './src/controllers/training/index.js';
 import { login, register } from './src/controllers/users/index.js';
 
@@ -32,8 +34,10 @@ app.post('/register', register);
 app.post('/login', login);
 
 //rol general
-//training seleccionar todo
+//training seleccionar todo y/o por tipologia y musculo
+app.get('/training', validateAuth, searchTraining);
 //training seleccionar por ID
+app.get('/training/:idtraining', validateAuth, searchTrainingById);
 //dar like
 //dar favs
 

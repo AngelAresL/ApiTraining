@@ -1,6 +1,6 @@
-import pool from "./pool.js";
-import useDb from "./useDb.js";
-import { DB_NAME } from "../../env.js";
+import pool from './pool.js';
+import useDb from './useDb.js';
+import { DB_NAME } from '../../env.js';
 
 const initDb = async () => {
   try {
@@ -34,7 +34,6 @@ const initDb = async () => {
         );
     `);
 
-
     await pool.query(`
         CREATE TABLE IF NOT EXISTS likes (
           id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -47,7 +46,7 @@ const initDb = async () => {
         );
     `);
 
-        await pool.query(`
+    await pool.query(`
         CREATE TABLE IF NOT EXISTS favorites (
           id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
           id_user INT UNSIGNED NOT NULL,
@@ -58,8 +57,7 @@ const initDb = async () => {
         );
     `);
 
-
-    console.log("¡Base de datos creada satisfactoriamente! 😄");
+    console.log('¡Base de datos creada satisfactoriamente! 😄');
   } catch (error) {
     console.error(error);
   } finally {
