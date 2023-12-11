@@ -2,10 +2,6 @@ import  {generateError}  from "../../helpers/index.js";
 import {insertLike, selectLike, selectLikeById} from "../../models/likes/index.js";
 import {selectTrainingById} from "../../models/training/index.js";
 
-
-
-
-
 const addLike = async (req, res, next) => {
 try{
     //Cogemos el id de entrenamiento que se para por parametro
@@ -13,7 +9,7 @@ try{
     //Cogemos el id del payload de usuario logeado
     const loggedUserId = req.auth.id;   
 
-    //Comprobamos si el idtraining existe
+    //Comprobamos si el idtraining existe----------------------------------------
     const trainingExists = await selectTrainingById(trainingId);
     if(!trainingExists){
         generateError('El entrenamiento seleccionado no existe', 400);
@@ -27,11 +23,10 @@ try{
 
     //Insertamos id de usuario logeado e id de training en la tabla likes        
     const likeId = await insertLike(trainingId, loggedUserId);
-
-
     if(!likeId){
         generateError('Ha ocurrido un error dando like', 400);
     }
+
     //Comprobamos que se añadió el like a la tabla
     const [result] = await selectLikeById(likeId);
     if(!result){

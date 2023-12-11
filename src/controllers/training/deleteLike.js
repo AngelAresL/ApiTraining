@@ -10,7 +10,7 @@ try{
     const loggedUserId = req.auth.id; 
     console.log("Usuario: " +loggedUserId+" Entrenamiento: "+trainingId);
 
-    //Comprobamos si el idtraining existe
+    //Comprobamos si el idtraining existe------------------------------------------
     const trainingExists = await selectTrainingById(trainingId);
     if(!trainingExists){
         generateError('El entrenamiento seleccionado no existe', 400);
@@ -20,7 +20,7 @@ try{
     const idLike = await selectLike(loggedUserId, trainingId);
 
     if (idLike=== 0){  
-        generateError('Este usuario no puede borrar un like k no dio', 400);   
+        generateError('Este usuario no puede borrar un like que no dio', 400);   
     }else{
         await deleteLikeById(idLike);
     }    

@@ -39,7 +39,7 @@ app.post('/login', login);
 //training seleccionar por ID
 //dar like
 app.post('/like/:idtraining',validateAuth, addLike);
-app.delete('/deleteLike/:idtraining', validateAuth, deleteLike);
+app.delete('/like/:idtraining', validateAuth, deleteLike);
 //dar favs
 
 //rol admin
