@@ -6,23 +6,26 @@ import sendMailUtil from '../../helpers/sendMailUtil.js';
 
 //  esquema de validación con Joi
 const schema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-  rol: Joi.string().required(),
+  name: Joi.string().required().error(() => {
+    generateError( 'El nombre es un campo obligatorio',400)
+  }),
+  email: Joi.string().email().required().error(() => {
+   generateError( 'El email es un campo obligatorio y debe ser una dirección de correo válida',400)     
+    
+  }),
+  password: Joi.string().required().error(() => {
+    generateError( 'El password es un campo obligatorio',400)
+  }),
+ 
 });
 
 const register = async (req, res, next) => {
   try {
     // Valida los datos de entrada
-    const { error, value } = schema.validate(req.body);
-
-    if (error) {
-      generateError('Error en la validación de datos', 400);
-    }
+     const { value } = schema.validate(req.body);  
 
     // Desestructuro los datos validados
-    const { name, email, password, rol } = value;
+    let { name, email, password, rol } = value;
 
     // Compruebo si el correo electrónico ya existe
     const emailExists = await selectUserByEmail(email);
@@ -30,9 +33,14 @@ const register = async (req, res, next) => {
     if (emailExists) {
       generateError('Ya existe un usuario con este email 😥', 400);
     }
+    console.log(rol);
+    if(rol != 'admin' ){
+      rol = 'normal'
+    };
 
     // Genero el hash de la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
+
 
     // Inserto el usuario en la base de datos
     const insertId = await insertUser(name, email, hashedPassword, rol);
