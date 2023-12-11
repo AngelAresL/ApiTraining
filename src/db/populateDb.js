@@ -8,7 +8,8 @@ const populateDb = async () => {
     await pool.query(`
     INSERT INTO users (name,email,password,rol) VALUES
         ("David","barry@email.com", "$2b$10$hVbvxTk/5m25B1GToQlPueIIdHwzy.QOJ63QGoE12370h9jk9fqMu","normal"),
-        ("pepe", "bar2@gmail","$2b$10$CC6JLkcwjm5VOY6ah8a/c.dISPllYMA/2PMQCed2GhO5wDkak.lBa", "admin");
+        ("pepe", "bar2@gmail","$2b$10$CC6JLkcwjm5VOY6ah8a/c.dISPllYMA/2PMQCed2GhO5wDkak.lBa", "admin"),
+        ("Manolo","prueba@email.com","$2b$10$GEvexLm0QoAW618IAKL1y.mLb.GE1anWvyYeXKUAyZoGNW0KRXqk.", "admin");
     `);
 
     await pool.query(`

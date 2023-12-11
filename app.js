@@ -3,13 +3,16 @@ import morgan from 'morgan';
 import fileUpload from 'express-fileupload';
 import useDb from './src/db/useDb.js';
 import {
+
   handleError,
   notFound,
   validateAuth,
 } from './src/middlewares/index.js';
 import { SERVER_PORT, SERVER_HOST } from './env.js';
 import {
+  addLike,
   createTraining,
+  deleteLike,
   deleteTraining,
   modifyTraining,
   searchTraining,
@@ -46,6 +49,8 @@ app.get('/training', validateAuth, searchTraining);
 //training seleccionar por ID
 app.get('/training/:idtraining', validateAuth, searchTrainingById);
 //dar like
+app.post('/like/:idtraining',validateAuth, addLike);
+app.delete('/deleteLike/:idtraining', validateAuth, deleteLike);
 //dar favs
 app.post('/fav/:idtraining', validateAuth, addFav);
 //quitar favs

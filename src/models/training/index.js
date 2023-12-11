@@ -6,6 +6,7 @@ import addFavById from './favs/addFavById.js';
 import removeFavById from './favs/removeFavById.js';
 import getFavByUser from './favs/getFavByUser.js';
 
+
 export {
   insertTraining,
   selectTrainingById,
