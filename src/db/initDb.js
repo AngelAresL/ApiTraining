@@ -53,7 +53,8 @@ const initDb = async () => {
           id_training INT UNSIGNED NOT NULL,
           createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (id_user) REFERENCES users (id),
-          FOREIGN KEY (id_training) REFERENCES training (id)
+          FOREIGN KEY (id_training) REFERENCES training (id),
+          CONSTRAINT trainingF UNIQUE (id_user,id_training)
         );
     `);
 

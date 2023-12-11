@@ -14,6 +14,9 @@ import {
   modifyTraining,
   searchTraining,
   searchTrainingById,
+  addFav,
+  removeFav,
+  getFav
 } from './src/controllers/training/index.js';
 import { login, register } from './src/controllers/users/index.js';
 
@@ -40,6 +43,12 @@ app.get('/training', validateAuth, searchTraining);
 app.get('/training/:idtraining', validateAuth, searchTrainingById);
 //dar like
 //dar favs
+app.post('/fav/:idtraining', validateAuth, addFav);
+//quitar favs
+app.delete('/fav/:idtraining', validateAuth, removeFav);
+
+//listar todos los favs
+app.get('/fav', validateAuth, getFav);
 
 //rol admin
 //training create
