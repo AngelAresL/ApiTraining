@@ -1,9 +1,13 @@
 import {
   insertTraining,
   selectTrainingById,
+  selectExistingTraining,
 } from '../../models/training/index.js';
-import { saveImage, generateError } from '../../helpers/index.js';
-import validateJoiTraining from '../../helpers/validateJoiTraining.js';
+import {
+  saveImage,
+  generateError,
+  validateJoiTraining,
+} from '../../helpers/index.js';
 
 const createTraining = async (req, res, next) => {
   try {
@@ -28,6 +32,16 @@ const createTraining = async (req, res, next) => {
       photoTrainingName = await saveImage(crudeData);
     } else {
       photoTrainingName = 'defaultWorkoutAvatar.jpg';
+    }
+    const trainingId = await selectExistingTraining(
+      name,
+      description,
+      typology,
+      muscle_group
+    );
+    console.log(trainingId);
+    if (trainingId) {
+      generateError('El entrenamiento que intentas crear ya existe', 400);
     }
 
     const insertNewIdTraining = await insertTraining({

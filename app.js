@@ -3,7 +3,6 @@ import morgan from 'morgan';
 import fileUpload from 'express-fileupload';
 import useDb from './src/db/useDb.js';
 import {
-
   handleError,
   notFound,
   validateAuth,
@@ -19,7 +18,7 @@ import {
   searchTrainingById,
   addFav,
   removeFav,
-  getFav
+  getFav,
 } from './src/controllers/training/index.js';
 import {
   forgotPassword,
@@ -49,8 +48,8 @@ app.get('/training', validateAuth, searchTraining);
 //training seleccionar por ID
 app.get('/training/:idtraining', validateAuth, searchTrainingById);
 //dar like
-app.post('/like/:idtraining',validateAuth, addLike);
-app.delete('/deleteLike/:idtraining', validateAuth, deleteLike);
+app.post('/like/:idtraining', validateAuth, addLike);
+app.delete('/like/:idtraining', validateAuth, deleteLike);
 //dar favs
 app.post('/fav/:idtraining', validateAuth, addFav);
 //quitar favs

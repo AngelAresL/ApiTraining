@@ -1,17 +1,20 @@
 import insertTraining from './insertTraining.js';
+import selectTraining from './selectTraining.js';
 import selectTrainingById from './selectTrainingById.js';
 import deleteTrainingById from './deleteTrainingById.js';
-import selectTraining from './selectTraining.js';
+import modifyTrainingById from './modifyTrainingById.js';
+import selectExistingTraining from './selectExistingTraining.js';
 import addFavById from './favs/addFavById.js';
 import removeFavById from './favs/removeFavById.js';
 import getFavByUser from './favs/getFavByUser.js';
 
-
 export {
   insertTraining,
+  selectTraining,
   selectTrainingById,
   deleteTrainingById,
-  selectTraining,
+  modifyTrainingById,
+  selectExistingTraining,
   addFavById,
   removeFavById,
   getFavByUser,

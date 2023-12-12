@@ -1,17 +1,25 @@
-import generateError from '../../helpers/generateError.js';
-import pool from '../../db/pool.js';
-import { selectTrainingById } from '../../models/training/index.js';
-import modifyTrainingById from '../../models/training/modifyTrainingById.js';
+import {
+  existingData,
+  generateError,
+  saveImage,
+  validateJoiTraining,
+} from '../../helpers/index.js';
+import {
+  selectTrainingById,
+  modifyTrainingById,
+} from '../../models/training/index.js';
 
 const modifyTraining = async (req, res, next) => {
   try {
     const trainingId = req.params.idtraining;
-    const { name, description, photo, typology, muscle_group, id_user } =
-      req.body;
+    const crudeData = req.files;
+    const { name, description, typology, muscle_group } = req.body;
+    let photoTrainingName;
+    const loggedUserRol = req.auth.rol;
 
-    const rolUser = req.auth.rol;
+    await validateJoiTraining({ name, description, typology, muscle_group });
 
-    if (rolUser !== 'admin') {
+    if (loggedUserRol !== 'admin') {
       generateError(
         'Debes ser administrador para modificar entrenamientos',
         403
@@ -24,44 +32,30 @@ const modifyTraining = async (req, res, next) => {
       generateError('El entrenamiento no existe', 404);
     }
 
-    const {
-      name: existingName,
-      description: existingDescription,
-      photo: existingPhoto,
-      typology: existingTypology,
-      muscle_group: existingMuscleGroup,
-      id_user: existingUserId,
-    } = existingTraining;
+    existingData(
+      req.body,
+      existingTraining,
+      'Debes cambiar algún dato del entrenamiento'
+    );
+
+    //Comprueba si existe imagen
+    if (req.files && req.files.image) {
+      //llama a funcion de guaradar imagen
+      photoTrainingName = await saveImage(crudeData);
+    } else {
+      photoTrainingName = 'defaultWorkoutAvatar.jpg';
+    }
 
     // Update de training en la base de datos
     const updatedTraining = await modifyTrainingById(
       name,
       description,
-      photo,
+      photoTrainingName,
       typology,
       muscle_group,
-      id_user,
+      existingTraining.id_user,
       trainingId
     );
-    // if (updatedTraining.changedRows === 0) {
-    //   generateError('Hubo un problema al actualizar el entrenamiento', 500);
-    // }
-
-    const updateChanges = await selectTrainingById(trainingId);
-    const hasChanged =
-      updateChanges.name !== existingTraining.name ||
-      updateChanges.description !== existingTraining.description ||
-      updateChanges.photo !== existingTraining.photo ||
-      updateChanges.typology !== existingTraining.typology ||
-      updateChanges.muscle_group !== existingTraining.muscle_group ||
-      updateChanges.id_user !== existingTraining.id_user;
-
-    
-    console.log(updateChanges, existingTraining);
-
-    if (!hasChanged) {
-      generateError('Debes cambiar algún dato del entrenamiento', 400);
-    }
 
     res.status(200).json({
       message: 'Entrenamiento actualizado correctamente',
