@@ -24,7 +24,7 @@ const initDb = async () => {
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(50) NOT NULL,
             description VARCHAR(200) NOT NULL,
-            photo VARCHAR(100),           
+            photo VARCHAR(100) DEFAULT "defaultAvatar.jpg",           
             typology VARCHAR(50) NOT NULL,
             muscle_group VARCHAR(50) NOT NULL,
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,    
@@ -41,7 +41,8 @@ const initDb = async () => {
           id_training INT UNSIGNED NOT NULL,
           createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (id_user) REFERENCES users (id),
-          FOREIGN KEY (id_training) REFERENCES training (id)
+          FOREIGN KEY (id_training) REFERENCES training (id),
+          CONSTRAINT trainingF UNIQUE (id_user,id_training)
 
         );
     `);

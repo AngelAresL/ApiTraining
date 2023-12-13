@@ -1,8 +1,6 @@
 import express from 'express';
-import {validateAuth} from '../middlewares/index.js';
-import { addFav, getFav, removeFav } from '../controllers/training/index.js';
-
-
+import { validateAuth } from '../middlewares/index.js';
+import { addFav, getFav, removeFav } from '../controllers/fav/index.js';
 
 const router = express.Router();
 
@@ -13,7 +11,5 @@ router.delete('/fav/:idtraining', validateAuth, removeFav);
 
 //listar todos los favs
 router.get('/fav', validateAuth, getFav);
-
-
 
 export default router;

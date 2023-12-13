@@ -3,6 +3,7 @@ import {
   generateError,
   saveImage,
   validateJoiTraining,
+  validateInt,
 } from '../../helpers/index.js';
 import {
   selectTrainingById,
@@ -16,6 +17,7 @@ const modifyTraining = async (req, res, next) => {
     const { name, description, typology, muscle_group } = req.body;
     let photoTrainingName;
     const loggedUserRol = req.auth.rol;
+    validateInt('trainingId no válido.', trainingId);
 
     await validateJoiTraining({ name, description, typology, muscle_group });
 

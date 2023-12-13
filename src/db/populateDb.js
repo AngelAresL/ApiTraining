@@ -37,7 +37,8 @@ VALUES ('Press de Banca', '4 series de 15 repeticiones', 'Fuerza', 'Pecho',2),
     console.log('Base de datos poblada.');
   } catch (error) {
     console.error(`Error al insertar los datos en la bbdd ${DB_NAME}`);
-    process.exit(1);
+  } finally {
+    process.exit();
   }
 };
 

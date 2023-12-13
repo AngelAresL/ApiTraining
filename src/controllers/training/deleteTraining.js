@@ -1,15 +1,11 @@
-import generateError from '../../helpers/generateError.js';
+import { generateError, validateInt } from '../../helpers/index.js';
 import { deleteTrainingById } from '../../models/training/index.js';
 
 const deleteTraining = async (req, res, next) => {
   try {
     const rol = req.auth.rol;
     const trainingId = req.params.idtraining;
-    const numRegex = /^\d+$/;
-
-    if (!numRegex.test(trainingId)) {
-      throw generateError('trainingId no válido', 404);
-    }
+    validateInt('trainingId no válido.', trainingId);
 
     // Comprobar que el usuario del token es admin.
     if (rol !== 'admin') {
