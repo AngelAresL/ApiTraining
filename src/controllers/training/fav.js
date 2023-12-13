@@ -3,7 +3,7 @@ import {
   addFavById,
   removeFavById,
   getFavByUser,
-} from '../../models/training/index.js';
+} from '../../models/favs/index,.js';
 
 // Añadir un entreno a favoritos
 const addFav = async (req, res, next) => {

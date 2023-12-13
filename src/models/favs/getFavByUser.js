@@ -1,5 +1,5 @@
-import pool from '../../../db/pool.js';
-import { generateError } from '../../../helpers/index.js';
+import pool from '../../db/pool.js';
+import { generateError } from '../../helpers/index.js';
 
 const getFavByUser = async (id_user) => {
   try {

@@ -4,9 +4,8 @@ import selectTrainingById from './selectTrainingById.js';
 import deleteTrainingById from './deleteTrainingById.js';
 import modifyTrainingById from './modifyTrainingById.js';
 import selectExistingTraining from './selectExistingTraining.js';
-import addFavById from './favs/addFavById.js';
-import removeFavById from './favs/removeFavById.js';
-import getFavByUser from './favs/getFavByUser.js';
+//import addFavById from './favs/addFavById.js';
+
 
 export {
   insertTraining,
@@ -14,8 +13,6 @@ export {
   selectTrainingById,
   deleteTrainingById,
   modifyTrainingById,
-  selectExistingTraining,
-  addFavById,
-  removeFavById,
-  getFavByUser,
+  selectExistingTraining 
+ 
 };
