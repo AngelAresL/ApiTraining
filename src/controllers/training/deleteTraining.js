@@ -19,6 +19,12 @@ const deleteTraining = async (req, res, next) => {
       );
     }
 
+       //Consultamos cuantos registros de like tiene este entreno y los eliminamos ---------------
+       const likes= await selecAllLikes(trainingId);
+       if (!likes){
+         generateError('Ha ocurrido un error borrando likes de este entreno', 404);
+       }
+
     // Borrar el entreno
     const train = await deleteTrainingById(trainingId);
     console.log(train);
