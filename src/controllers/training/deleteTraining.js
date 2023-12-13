@@ -1,4 +1,5 @@
 import generateError from '../../helpers/generateError.js';
+import {selecAllLikes} from '../../models/likes/index.js'
 import { deleteTrainingById } from '../../models/training/index.js';
 
 const deleteTraining = async (req, res, next) => {

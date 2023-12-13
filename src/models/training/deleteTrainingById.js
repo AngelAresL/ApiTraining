@@ -5,6 +5,7 @@ const deleteTrainingById = async (id) => {
     const query = 'DELETE FROM training WHERE id = ?';
     await pool.query(query, [id]);
     console.log(query);
+    
     return {
       status: 200,
       message: 'Entreno borrado con éxito',
