@@ -5,26 +5,11 @@ import useDb from './src/db/useDb.js';
 import {
   handleError,
   notFound,
-  validateAuth,
+ 
 } from './src/middlewares/index.js';
 import { SERVER_PORT, SERVER_HOST } from './env.js';
-import {
-  addLike,
-  createTraining,
-  deleteLike,
-  deleteTraining,
-  modifyTraining,
-  searchTraining,
-  searchTrainingById,
-  addFav,
-  removeFav,
-  getFav,
-} from './src/controllers/training/index.js';
-import {
-  forgotPassword,
-  resetPassword,
-} from './src/controllers/password/index.js';
-import { login, register } from './src/controllers/users/index.js';
+
+import {userRoutes, trainingRoutes, likeRoutes, favRoutes} from './src/routes/index.js'
 
 const app = express();
 app.use(express.json());
@@ -37,39 +22,12 @@ app.use(morgan('dev'));
 useDb();
 
 //Rutas
-//user register
-//user login
-app.post('/register', register);
-app.post('/login', login);
 
-//rol general
-//training seleccionar todo y/o por tipologia y musculo
-app.get('/training', validateAuth, searchTraining);
-//training seleccionar por ID
-app.get('/training/:idtraining', validateAuth, searchTrainingById);
-//dar like
-app.post('/like/:idtraining', validateAuth, addLike);
-app.delete('/like/:idtraining', validateAuth, deleteLike);
-//dar favs
-app.post('/fav/:idtraining', validateAuth, addFav);
-//quitar favs
-app.delete('/fav/:idtraining', validateAuth, removeFav);
+app.use(userRoutes);
+app.use(trainingRoutes);
+app.use(likeRoutes);
+app.use(favRoutes);
 
-//listar todos los favs
-app.get('/fav', validateAuth, getFav);
-
-//rol admin
-//training create
-app.post('/training', validateAuth, createTraining);
-//training delete
-// app.delete("/training", validateAuth, deleteTraining)
-app.delete('/training/:idtraining', validateAuth, deleteTraining);
-//training modify (put y path)
-app.put('/training/:idtraining', validateAuth, modifyTraining);
-
-//olvido de password
-app.post('/loginForgot', forgotPassword);
-app.patch('/loginReset', validateAuth, resetPassword);
 
 //middlewares de manejo de errores y pagina no encontrada
 
