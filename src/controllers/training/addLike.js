@@ -27,8 +27,6 @@ try{
 
     //Insertamos id de usuario logeado e id de training en la tabla likes        
     const likeId = await insertLike(trainingId, loggedUserId);
-
-
     if(!likeId){
         generateError('Ha ocurrido un error dando like', 400);
     }

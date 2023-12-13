@@ -4,7 +4,7 @@ import {selectTrainingById} from '../training/index.js';
 const selecAllLikes = async (trainingId) => {
   try {
     //Comprobamos si el idtraining existe
-    const trainingExists = await selectTrainingById(trainingId);
+    const trainingExists = await selectTrainingById(trainingId);    
     if(!trainingExists){
         generateError('El entrenamiento seleccionado no existe', 400);
     }else{
