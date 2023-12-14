@@ -4,4 +4,5 @@ import selectLike from './selectLike.js';
 import selectLikeById from './selectLikeById.js';
 import selecAllLikes from './selectAllLikes.js';
 
-export { insertLike, deleteLikeById, selectLike, selectLikeById,selecAllLikes };
+
+export { insertLike, deleteLikeById, selectLike, selectLikeById,selecAllLikes};

@@ -10,7 +10,8 @@ import {
 } from './src/middlewares/index.js';
 import { SERVER_PORT, SERVER_HOST } from './env.js';
 
-import {userRoutes, trainingRoutes, likeRoutes, favRoutes} from './src/routes/index.js'
+import {userRoutes, trainingRoutes, likeRoutes, favRoutes, sortRoutes} from './src/routes/index.js'
+
 
 const app = express();
 // middlware que analiza los cuerpos de las solicitudes en formato JSON
@@ -31,6 +32,7 @@ app.use(userRoutes);
 app.use(trainingRoutes);
 app.use(likeRoutes);
 app.use(favRoutes);
+app.use(sortRoutes);
 
 
 //middlewares de manejo de errores y pagina no encontrada

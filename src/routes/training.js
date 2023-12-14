@@ -13,15 +13,11 @@ router.delete("/training", validateAuth, deleteTraining)
 router.delete('/training/:idtraining', validateAuth, deleteTraining);
 //training modify (put y path)
 router.put('/training/:idtraining', validateAuth, modifyTraining);
+
+
 //training seleccionar todo y/o por tipologia y musculo
-router.get('/training', validateAuth, searchTraining);
+router.get('/training', searchTraining);                       
 //training seleccionar por ID
-router.get('/training/:idtraining', validateAuth, searchTrainingById);
-
-
-
-
-
-
+router.get('/training/:idtraining', searchTrainingById);              
 
 export default router;

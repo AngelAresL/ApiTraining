@@ -1,7 +1,7 @@
 import pool from '../../db/pool.js';
 
-const selectTraining = async ({ typology, muscle_group }) => {
-  let sqlQuery = 'SELECT * FROM training';
+const selectTraining = async ({ typology, name, muscle_group, createdAt }) => {
+  let sqlQuery = 'SELECT name, description, photo, typology, muscle_group, createdAt FROM training';
   const sqlValues = [];
   let sqlClause = 'WHERE';
 
@@ -15,7 +15,19 @@ const selectTraining = async ({ typology, muscle_group }) => {
     sqlQuery += ` ${sqlClause} muscle_group LIKE ?`;
     sqlValues.push(`%${muscle_group}%`);
   }
+  
+  //--------------------------------------------------------------------------------
+if (name) {
+  sqlQuery += `  ORDER BY name`;
 
+}
+
+if (createdAt) {
+  sqlQuery += `  ORDER BY createdAt DESC`;
+
+}
+
+//--------------------------------------------------------------------------------
   const [training] = await pool.query(sqlQuery, sqlValues);
 
   return training;
