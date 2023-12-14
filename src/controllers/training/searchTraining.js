@@ -5,7 +5,7 @@ const searchTraining = async (req, res, next) => {
     const training = await selectTraining(req.query);
 
     res.send({
-      message: 'Entrenos seleccionados',
+      message: 'Entrenamientos seleccionados.',
       data: training,
     });
   } catch (error) {

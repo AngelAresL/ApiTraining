@@ -1,3 +1,4 @@
+//Importación de dependencias
 import express from 'express';
 import morgan from 'morgan';
 import fileUpload from 'express-fileupload';
@@ -12,13 +13,16 @@ import { SERVER_PORT, SERVER_HOST } from './env.js';
 import {userRoutes, trainingRoutes, likeRoutes, favRoutes} from './src/routes/index.js'
 
 const app = express();
+// middlware que analiza los cuerpos de las solicitudes en formato JSON
 app.use(express.json());
 
-//middleware de fileupolad
+//middleware de fileupolad para manejar solicitudes que contenga archivos adjuntos
 app.use(fileUpload());
 
-//middlewares de morgan o cors
+//middlewares de morgan , infromación sobre las solicitudes HTTP que llegan al servidor 
 app.use(morgan('dev'));
+
+// Selección de base de datos en la que trabajamos
 useDb();
 
 //Rutas
@@ -32,10 +36,9 @@ app.use(favRoutes);
 //middlewares de manejo de errores y pagina no encontrada
 
 app.use(notFound);
-
 app.use(handleError);
 
-//levantar servidor
+//Inicialización del servidor
 app.listen(SERVER_PORT, () => {
-  console.log(`Server listening on ${SERVER_HOST}:${SERVER_PORT}`);
+  console.log(`Servidor escuchando en la dirección ${SERVER_HOST}:${SERVER_PORT}`);
 });

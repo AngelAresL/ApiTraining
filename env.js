@@ -1,3 +1,4 @@
+// Importamos dependencia dotenv para la gestión de las variables de entorno que se recogen en el .env
 import 'dotenv/config';
 
 const {

@@ -8,25 +8,26 @@ const deleteLike = async (req, res, next) => {
     const trainingId = req.params.idtraining;
     //Cogemos el id del payload de usuario logeado
     const loggedUserId = req.auth.id;
+        // Hacemos la llamada al helper de validación del numero entero
     validateInt('trainingId no válido.', trainingId);
 
     //Comprobamos si el idtraining existe
     const trainingExists = await selectTrainingById(trainingId);
     if (!trainingExists) {
-      generateError('El entrenamiento seleccionado no existe', 400);
+      generateError('El entrenamiento seleccionado no existe.', 404);
     }
 
     //Comprobamos si el usuario es kien dio like a este entrenamiento
     const idLike = await selectLike(loggedUserId, trainingId);
 
     if (idLike === 0) {
-      generateError('Este usuario no puede borrar un like k no dio', 400);
+      generateError('Este usuario no puede borrar un like que no dió.', 401);
     } else {
       await deleteLikeById(idLike);
     }
 
     res.status(201).send({
-      message: `El like con id: ${idLike} fue borrado con exito`,
+      message: `El like con id: ${idLike} fue borrado con exito.`,
     });
   } catch (error) {
     next(error);

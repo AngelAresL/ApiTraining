@@ -11,7 +11,7 @@ const resetPassword = async (req, res, next) => {
     //Seleccionamos el usuario por id
     const userDb = await selectUserById(loggedUserId);
     if (!userDb) {
-      generateError('Los datos no son correctos', 400);
+      generateError('Los datos no son correctos.', 401);
     }
 
     // Genero el hash de la nueva contraseña
@@ -21,7 +21,7 @@ const resetPassword = async (req, res, next) => {
     await modifyPasswordUser(hashedPassword, loggedUserId);
 
     //Enviamos mensaje si todo ha ido bien
-    res.send({ message: 'Contraseña modificada correctamente ' });
+    res.send({ message: 'Contraseña modificada correctamente.' });
   } catch (error) {
     next(error);
   }

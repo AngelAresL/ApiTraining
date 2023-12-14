@@ -37,9 +37,8 @@ const register = async (req, res, next) => {
 
     // Compruebo si el correo electrónico ya existe
     const emailExists = await selectUserByEmail(email);
-
     if (emailExists) {
-      generateError('Ya existe un usuario con este email 😥', 400);
+      generateError('Ya existe un usuario con este email 😥.', 409);
     }
 
     if (rol != 'admin') {
@@ -53,8 +52,8 @@ const register = async (req, res, next) => {
     const insertId = await insertUser(name, email, hashedPassword, rol);
 
     // Configuro el asunto y cuerpo del correo electrónico
-    const emailSubject = 'Gracias por registrarte en nuestra plataforma';
-    const bodyMail = `!!!!Bienvenid@ ${name} 
+    const emailSubject = 'Gracias por registrarte en nuestra plataforma 🦾';
+    const bodyMail = `  Bienvenid@ ${name} 
                         Gracias por registrarte, pronto nos comunicaremos contigo`;
 
     // Envío el correo electrónico

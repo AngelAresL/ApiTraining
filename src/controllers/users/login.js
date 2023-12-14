@@ -11,13 +11,13 @@ const login = async (req, res, next) => {
     //Seleccionamos el usuario en la bbdd por el email
     const userDb = await selectUserByEmail(email);
     if (!userDb) {
-      generateError("Los datos no son correctos", 400);
+      generateError("Los datos no son correctos.", 401);
     }
 
     //Comparamos la password del body, con la password hasheada  
     const comparePassword = await bcrypt.compare(password, userDb.password);
     if (!comparePassword) {
-      generateError("Los datos no son correctos", 400);
+      generateError("Los datos no son correctos.", 401);
     }
 
     //Creamos el Payload con el id de users de la bbdd, y su rol. Despues generamos el TOKEN
@@ -30,7 +30,7 @@ const login = async (req, res, next) => {
     });
 
     //Enviamos mensaje si todo ha ido bien
-    res.send({ message: "Loggeado correctamente", data: { token } });
+    res.send({ message: "Loggeado correctamente.", data: { token } });
     
   } catch (error) {
     next(error);

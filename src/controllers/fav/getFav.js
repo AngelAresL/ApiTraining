@@ -3,6 +3,7 @@ import { getFavByUser } from '../../models/favs/index.js';
 const getFav = async (req, res, next) => {
   try {
     const loggedUserId = req.auth.id;
+    // Llamamos al model para listar favoritos
     const [getFav] = await getFavByUser(loggedUserId);
 
     res.status(200).json({

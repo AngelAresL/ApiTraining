@@ -16,17 +16,17 @@ const createTraining = async (req, res, next) => {
     const crudeData = req.files;
     let photoTrainingName;
     const { name, description, typology, muscle_group } = req.body;
-    //Validacion de Joi
 
+    //Validacion de Joi
     await validateJoiTraining({ name, description, typology, muscle_group });
 
     if (loggedUserRol != 'admin') {
       generateError(
-        'Necesario credencial de administrador para realizar esta tarea',
+        'Necesario credencial de administrador para realizar esta tarea.',
         401
       );
     }
-    //Comprueba si existe imagen
+    //Comprueba si el usuario adjunta imagen 
     if (req.files && req.files.image) {
       //llama a funcion de guaradar imagen
       photoTrainingName = await saveImage(crudeData);
@@ -39,9 +39,9 @@ const createTraining = async (req, res, next) => {
       typology,
       muscle_group
     );
-    console.log(trainingId);
+    
     if (trainingId) {
-      generateError('El entrenamiento que intentas crear ya existe', 400);
+      generateError('El entrenamiento que intentas crear ya existe.', 409);
     }
 
     const insertNewIdTraining = await insertTraining({
@@ -56,7 +56,7 @@ const createTraining = async (req, res, next) => {
     const newTraining = await selectTrainingById(insertNewIdTraining);
 
     res.status(201).send({
-      message: 'Se ha creado su entreno correctamente',
+      message: 'Se ha creado su entreno correctamente.',
       data: newTraining,
     });
   } catch (error) {

@@ -17,6 +17,7 @@ const modifyTraining = async (req, res, next) => {
     const { name, description, typology, muscle_group } = req.body;
     let photoTrainingName;
     const loggedUserRol = req.auth.rol;
+     // Hacemos la llamada al helper de validación del numero entero
     validateInt('trainingId no válido.', trainingId);
 
     await validateJoiTraining({ name, description, typology, muscle_group });
@@ -27,17 +28,16 @@ const modifyTraining = async (req, res, next) => {
         403
       );
     }
-
+    // Comprobamos que el entrenamiento existe
     const existingTraining = await selectTrainingById(trainingId);
-
     if (!existingTraining) {
-      generateError('El entrenamiento no existe', 404);
+      generateError('El entrenamiento no existe.', 404);
     }
 
     existingData(
       req.body,
       existingTraining,
-      'Debes cambiar algún dato del entrenamiento'
+      'Debes cambiar algún dato del entrenamiento.'
     );
 
     //Comprueba si existe imagen
