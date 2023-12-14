@@ -1,5 +1,7 @@
 import { generateError, validateInt } from '../../helpers/index.js';
-import { deleteTrainingById } from '../../models/training/index.js';
+import {selecAllFavorites} from '../../models/favs/index.js';
+import {selecAllLikes} from '../../models/likes/index.js';
+import { deleteTrainingById,selectTrainingById } from '../../models/training/index.js';
 
 const deleteTraining = async (req, res, next) => {
   try {
@@ -13,6 +15,23 @@ const deleteTraining = async (req, res, next) => {
         'No tienes permisos de administrador para borrar este entreno.',
         401
       );
+    }
+    //Comprobamos si el idtraining existe
+    const trainingExists = await selectTrainingById(trainingId);
+    if(!trainingExists){
+        generateError('El entrenamiento seleccionado no existe', 400);
+      }
+
+   //Consultamos cuantos registros de like tiene este entreno y los borramos---------------------------------
+    const likes= await selecAllLikes(trainingId);
+    if (!likes){
+      generateError('Ha ocurrido un error borrando likes de este entreno', 404);
+    }
+
+    //Consultamos cuantos registros de like tiene este entreno y los borramos
+    const favorites= await selecAllFavorites(trainingId);
+    if (!favorites){
+      generateError('Ha ocurrido un error borrando favoritos de este entreno', 404);
     }
 
     // Borrar el entreno
