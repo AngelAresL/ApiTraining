@@ -4,7 +4,6 @@ Esta API permite publicar ejercicios para la gestión de los mismos en un
 gimnasio.
 Esta pensada para la gestión interna de un gimnasio dónde sólo los usuarios Admin podrán crear y eliminar rutinas de entrenamiento, y dónde cualquier usuario sea Admin o Normal podrá dar Like o añadir a sus favoritos las rutinas existentes.
 
-
 ## Requisitos
 
 Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
@@ -26,17 +25,16 @@ Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
 
 ## Uso API
 
-El proyecto se lanza ejecutando el comando npm install en tu terminal 
+El proyecto se lanza ejecutando el comando npm install en tu terminal
 Dispones de un script Start para inicializar el proyecto, en caso de ser la primera ocasión que se ejecuta el proyecto el terminal le pedirá ejecutar el scrip InitDb.
 Dispones de un script ResetDb para eliminar si fuera necesario y a posterior crear la Base de Datos .
 Dispones de un script PopulateDb por si fuera útil poblar la Base de Datos para las pruebas de la aplicación.
 Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesario ejecutar antes el script populateDb.
 
-
-
-## Entidades 
+## Entidades
 
 - Users:
+
   - id
   - name
   - email
@@ -45,6 +43,7 @@ Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesar
   - creaedAt
 
 - Training:
+
   - id
   - name
   - descripción
@@ -56,12 +55,13 @@ Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesar
   - id_user
 
 - Favorites:
+
   - id
   - id_user
   - id_training
   - createdAt
 
-- Likes: 
+- Likes:
   - id
   - id_user
   - id_training
@@ -69,18 +69,19 @@ Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesar
 
 ## Endpoints
 
-- USERS 
+- USERS
 - **POST /register** Registro de usuario
 - **POST /login** Logeo del usuario previamente registrado
 - **POST /loginForgot** Solicitud de generar nueva contraseña
 - **POST /loginReset/:token** Reseteo de la contraseña a través de link de recuperación
+- **DELETE /removeUser/:id** Borrar a un usuario
 
 - TRAINING
 - **POST /training** Crear entrenamiento, sólo lo podrán hacer usuarios con Rol Admin
 - **DELETE / training** Borrar entrenamiento , sólo lo podrán hacer usuarios con Rol Admin
 - **DELETE / training/:idtraining** Borrar entrenamiento por Id seleccionado, sólo lo podrán hacer usuarios con Rol Admin
 - **PUT / training/:idtraining** Modificar entrenamiento por Id seleccionado, sólo lo podrán hacer usuarios con Rol Admin
-- **GET / training** Listar todos los entrenamientos, podemos además filtrar por tipologia, grupo muscular y ordenar por fecha o nombre  con query strings
+- **GET / training** Listar todos los entrenamientos, podemos además filtrar por tipologia, grupo muscular y ordenar por fecha o nombre con query strings
 - **GET / training/:idtraining** Obtener entrenamiento por Id
 
 - FAVORITOS
@@ -88,16 +89,18 @@ Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesar
 - **DELETE /fav/:idtraining** Eliminar de favorito a un entrenamientoo a través de su Id
 - **GET /fav** Listar entrenamientos favoritos de un usuario
 
-- LIKE 
+- LIKE
 - **POST /like/:idtraining** Dar Like a un entrenamientoo a través de su Id
 - **DELETE /like/:idtraining** Eliminar Like a un entrenamientoo a través de su Id
 - **GET /sortLikes** Ordenar entrenamientos por numero de likes.
 
 ## Autores
+
 - Angel Ares https://www.linkedin.com/in/ángel-a-b05205286/
 - David Barreira https://www.linkedin.com/in/david-barreira-suarez/
 - Luis Diaz https://www.linkedin.com/in/luisdiazvazquez/
 - Patricia Lojo www.linkedin.com/in/patricia-lojo-zubeldia
 
 ## Enlace directo al repositorio
+
 - https://github.com/AngelAresL/ApiTraining

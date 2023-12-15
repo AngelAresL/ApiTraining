@@ -1,8 +1,12 @@
 import express from 'express';
 
-import {login,register} from '../controllers/users/index.js';
-import {validateAuthLink} from '../middlewares/index.js';
-import {forgotPassword,  resetPassword } from '../controllers/password/index.js';
+import { login, register } from '../controllers/users/index.js';
+import { removeUser } from '../controllers/removeUser/index.js';
+import { validateAuthLink, validateAuth } from '../middlewares/index.js';
+import {
+  forgotPassword,
+  resetPassword,
+} from '../controllers/password/index.js';
 
 const router = express.Router();
 
@@ -14,5 +18,7 @@ router.post('/login', login);
 router.post('/loginForgot', forgotPassword);
 //Ruta para resetear la contraseña de usuario.
 router.patch('/loginReset/:token', validateAuthLink, resetPassword);
+//Ruta para borrar a un usuario.
+router.delete('/removeUser/:id', validateAuth, removeUser);
 
 export default router;
