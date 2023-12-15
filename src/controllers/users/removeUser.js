@@ -1,6 +1,5 @@
 import { generateError, validateInt } from '../../helpers/index.js';
-import { selectUserById } from '../../models/users/index.js';
-import removeUserById from '../../models/removeUser/index.js';
+import { selectUserById, removeUserById } from '../../models/users/index.js';
 
 // Borrar el entreno de favoritos
 const removeUser = async (req, res, next) => {

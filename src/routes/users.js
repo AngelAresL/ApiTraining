@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { login, register } from '../controllers/users/index.js';
-import { removeUser } from '../controllers/removeUser/index.js';
+import { login, register, removeUser } from '../controllers/users/index.js';
+
 import { validateAuthLink, validateAuth } from '../middlewares/index.js';
 import {
   forgotPassword,
