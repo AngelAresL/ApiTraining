@@ -6,18 +6,16 @@ import {createTraining, deleteTraining, modifyTraining, searchTraining, searchTr
 
 const router = express.Router();
 
-//training create
+//Ruta para crear un entrenamiento.
 router.post('/training', validateAuth, createTraining);
-//training delete
+//Rutas para borrar un entrenamiento.
 router.delete("/training", validateAuth, deleteTraining)
 router.delete('/training/:idtraining', validateAuth, deleteTraining);
-//training modify (put y path)
+//Ruta para modifcar un entrenamiento.
 router.put('/training/:idtraining', validateAuth, modifyTraining);
-
-
-//training seleccionar todo y/o por tipologia y musculo
+//Ruta para ordenar y filtrar entrenamientos.
 router.get('/training', searchTraining);                       
-//training seleccionar por ID
+//Ruta para seleccionar un entrenamiento.
 router.get('/training/:idtraining', searchTrainingById);              
 
 export default router;

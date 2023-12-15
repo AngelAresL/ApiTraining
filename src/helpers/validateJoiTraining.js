@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { generateError } from './index.js';
-
+// Hacemos las correspondientes validaciones con un esquema de Joi 
 const validateJoiTraining = async ({
   name,
   description,
@@ -51,9 +51,7 @@ const validateJoiTraining = async ({
     typology,
     muscle_group,
   });
-  // if (validation.error) {
-  //   return generateError(validation.error.message, 400);
-  // }
+
 };
 
 export default validateJoiTraining;

@@ -1,10 +1,10 @@
 import pool from '../../db/pool.js';
 import { generateError } from '../../helpers/index.js';
-
+// Función para eliminar un entrenamiento de favoritos.
 const removeFavById = async (id_user, id_training) => {
   try {
     await pool.query(
-      'DELETE FROM favorites WHERE id_training = ? AND id_user = ?',
+      'DELETE FROM favorites WHERE id_user = ? AND id_training = ?',
       [id_user, id_training]
     );
   } catch (error) {

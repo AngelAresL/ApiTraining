@@ -4,12 +4,11 @@ import { addFav, getFav, removeFav } from '../controllers/fav/index.js';
 
 const router = express.Router();
 
-//dar favs
+//Ruta para añadir favorito
 router.post('/fav/:idtraining', validateAuth, addFav);
-//quitar favs
+//Ruta para eliminar favorito
 router.delete('/fav/:idtraining', validateAuth, removeFav);
-
-//listar todos los favs
+////Ruta para añadir listar todos los favoritos.
 router.get('/fav', validateAuth, getFav);
 
 export default router;

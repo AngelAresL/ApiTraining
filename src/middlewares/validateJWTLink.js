@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { generateError } from '../helpers/index.js';
 import { TOKEN_SECRET } from '../../env.js';
+// Validamos la autorización del usuario a través de jsonwebtoken con params para generar un link de reseteo de password.
 
 const validateAuthLink = (req, res, next) => {
   try {

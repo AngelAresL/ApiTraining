@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { generateError } from '../helpers/index.js';
 import { TOKEN_SECRET } from '../../env.js';
-
+// Validamos la autorización del usuario a través de jsonwebtoken
 const validateAuth = (req, res, next) => {
   try {
     const { authorization } = req.headers;

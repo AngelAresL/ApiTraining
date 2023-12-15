@@ -1,7 +1,7 @@
 import pool from './pool.js';
 import useDb from './useDb.js';
 import { DB_NAME } from '../../env.js';
-
+// Creamos la base de datos
 const initDb = async () => {
   try {
     await pool.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`);

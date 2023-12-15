@@ -1,5 +1,5 @@
 import pool from '../../db/pool.js';
-
+// Función para modificar un entrenamientos existente.
 const modifyTrainingById = async (name, description, photo, typology, muscle_group, id_user, trainingId) => {
   try {
     const [updateRow] = await pool.query(
@@ -11,7 +11,7 @@ const modifyTrainingById = async (name, description, photo, typology, muscle_gro
 
     return updateRow;
   } catch (error) {
-    throw error; // Propaga el error para ser manejado por el código que llame a esta función
+    throw error; 
   }
 };
 

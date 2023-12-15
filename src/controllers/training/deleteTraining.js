@@ -1,6 +1,6 @@
 import { generateError, validateInt } from '../../helpers/index.js';
-import {selecAllFavorites} from '../../models/favs/index.js';
-import {selecAllLikes} from '../../models/likes/index.js';
+import {selectAllFavorites} from '../../models/favs/index.js';
+import {selectAllLikes} from '../../models/likes/index.js';
 import { deleteTrainingById,selectTrainingById } from '../../models/training/index.js';
 
 const deleteTraining = async (req, res, next) => {
@@ -24,13 +24,13 @@ const deleteTraining = async (req, res, next) => {
       }
 
    //Consultamos cuantos registros de like tiene este entreno y los borramos---------------------------------
-    const likes= await selecAllLikes(trainingId);
+    const likes= await selectAllLikes(trainingId);
     if (!likes){
       generateError(error, error.statusCode || 500);
     }
 
     //Consultamos cuantos registros de like tiene este entreno y los borramos
-    const favorites= await selecAllFavorites(trainingId);
+    const favorites= await selectAllFavorites(trainingId);
     if (!favorites){
       generateError(error, error.statusCode || 500);
     }

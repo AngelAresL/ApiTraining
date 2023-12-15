@@ -4,9 +4,7 @@ import { sortNumberLikes } from '../controllers/sortTraining/index.js';
 
 const router = express.Router();
 
-
-
-//Ordenar entrenos por numero de likes----------------------
+////Ruta para dar ordenar los entrennmientos por numero de likes.
 router.get('/sortLikes', sortNumberLikes);
 
 export default router;

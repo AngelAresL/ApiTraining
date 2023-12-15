@@ -1,5 +1,5 @@
 import pool from '../../db/pool.js';
-
+// Función para añadir un nuevo entrenamiento.
 const insertTraining = async ({
   name,
   description,

@@ -1,6 +1,6 @@
 import pool from '../../db/pool.js';
-
-const selecAllFavorites = async (trainingId) => {
+// Función para seleccionar todos los favoritos.
+const selectAllFavorites = async (trainingId) => {
   try {
     
     const [result] = await pool.query(
@@ -23,4 +23,4 @@ const selecAllFavorites = async (trainingId) => {
   }
 };
 
-export default selecAllFavorites;
+export default selectAllFavorites;

@@ -1,3 +1,4 @@
+// Este archivo lo utilizamos para unificar los import y export de la carpeta helpers.
 import generateError from './generateError.js';
 import sendMailUtil from './sendMailUtil.js';
 import createPathIfNotExist from './createPath.js';

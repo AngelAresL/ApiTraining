@@ -1,7 +1,7 @@
 import pool from './pool.js';
 import useDb from './useDb.js';
 import { DB_NAME } from '../../env.js';
-
+// Poblamos base de datos para pruebas
 const populateDb = async () => {
   try {
     await useDb();

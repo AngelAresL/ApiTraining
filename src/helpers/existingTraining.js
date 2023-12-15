@@ -1,5 +1,5 @@
 import { generateError } from './index.js';
-
+// Comprobamos que el entrenamiento exista
 const existingData = (bodyData, existingData, error) => {
   const { name, description, typology, muscle_group } = bodyData;
 

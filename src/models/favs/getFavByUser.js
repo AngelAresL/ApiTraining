@@ -1,6 +1,6 @@
 import pool from '../../db/pool.js';
 import { generateError } from '../../helpers/index.js';
-
+// Función para obtener la lista de favoritos del usuario .
 const getFavByUser = async (id_user) => {
   try {
     const selectFav = await pool.query(

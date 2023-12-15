@@ -1,6 +1,6 @@
 import pool from '../../db/pool.js';
 import { generateError } from '../../helpers/index.js';
-
+// Función para añadir un entrenamiento a favoritos
 const addFavById = async (id_user, id_training) => {
   try {
     const fav = await pool.query(

@@ -1,6 +1,6 @@
 import pool from '../../db/pool.js';
 import {generateError} from '../../helpers/index.js';
-
+// Función para ordenar los entrenamientos por número de likes.
 const sortLikes = async () => {
 
 try{  

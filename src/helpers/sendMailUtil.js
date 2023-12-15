@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 import { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } from '../../env.js';
 import generateError from './generateError.js';
 
-//Preparando el transporte de nuestro correo
+//Preparando el transporte de nuestro correo a través de los datos SMTP proporcionados en el .env
 const transport = nodemailer.createTransport({
   host: SMTP_HOST,
   port: SMTP_PORT,
@@ -14,8 +14,8 @@ const transport = nodemailer.createTransport({
   },
 });
 
-//Efectuar el envio el correo al usuario
-//Aqui recibe el nombre :        Parámetros
+//Efectuar el envio el correo de bienvenida al usuario.
+
 const sendMailUtil = async (email, subject, body) => {
   try {
     const mailOptions = {

@@ -1,5 +1,5 @@
 import pool from '../../db/pool.js';
-
+// Función para seleccionar un entrenamiento existente.
 const selectExistingTraining = async (
   name,
   description,

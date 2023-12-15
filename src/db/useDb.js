@@ -1,6 +1,6 @@
 import pool from "./pool.js";
 import { DB_NAME } from "../../env.js";
-
+// Activamos la base de datos existente 
 const useDb = async () => {
   try {
     await pool.query(`USE ${DB_NAME};`);

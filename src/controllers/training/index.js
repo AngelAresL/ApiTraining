@@ -1,3 +1,4 @@
+// Este archivo lo utilizamos para unificar los import y export de la carpeta training.
 import createTraining from './createTraining.js';
 import deleteTraining from './deleteTraining.js';
 import modifyTraining from './modifyTraining.js';

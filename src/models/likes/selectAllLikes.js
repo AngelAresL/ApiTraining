@@ -1,14 +1,14 @@
 import pool from '../../db/pool.js';
 
-
-const selecAllLikes = async (trainingId) => {
+// Función para listar los likes de un entrenamiento.
+const selectAllLikes = async (trainingId) => {
   try {
       
     const [result] = await pool.query(
       `SELECT * FROM likes WHERE id_training= ?`,
       [ trainingId]
     );
-    //console.log('Este entreno tiene estos likes: ', result);
+  
 
     for(let item of result){
         await pool.query(
@@ -23,4 +23,4 @@ const selecAllLikes = async (trainingId) => {
   }
 };
 
-export default selecAllLikes;
+export default selectAllLikes;

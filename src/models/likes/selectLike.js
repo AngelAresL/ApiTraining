@@ -1,5 +1,5 @@
 import pool from '../../db/pool.js';
-
+// Función para listar los likes por usuario y entrenamiento.
 const selectLike = async (loggedUserId, trainingId) => {
   try {
     const [[result]] = await pool.query(
