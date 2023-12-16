@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d9c2e759-cb38-4242-88c9-5f3a0d7a329e",
+		"_postman_id": "39b96373-37b1-4857-b5bd-a222da9ba170",
 		"name": "pruebasTraining",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31342527"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31342376"
 	},
 	"item": [
 		{
@@ -20,16 +20,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:3001/register",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"register"
-					]
-				}
+				"url": "localhost:3001/register"
 			},
 			"response": []
 		},
@@ -47,16 +38,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:3001/login",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"login"
-					]
-				}
+				"url": "localhost:3001/login"
 			},
 			"response": []
 		},
@@ -65,27 +47,13 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNDIzNzM2LCJleHAiOjE3MDUwMTU3MzZ9.vm3ZbQFB51VvgnYegpmOLao6kFFRrhM3lL6ZxqWYw1Q",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNzI5OTExLCJleHAiOjE3MDUzMjE5MTF9.LC_vwSxjK8EKtvRu8-YJngjE4mU1ySmEhAg0OsXIYv8"
+					}
 				},
 				"method": "POST",
 				"header": [],
-				"url": {
-					"raw": "localhost:3001/like/1",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"like",
-						"1"
-					]
-				}
+				"url": "localhost:3001/like/1"
 			},
 			"response": []
 		},
@@ -94,27 +62,13 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNDIzNzM2LCJleHAiOjE3MDUwMTU3MzZ9.vm3ZbQFB51VvgnYegpmOLao6kFFRrhM3lL6ZxqWYw1Q",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNzI5OTExLCJleHAiOjE3MDUzMjE5MTF9.LC_vwSxjK8EKtvRu8-YJngjE4mU1ySmEhAg0OsXIYv8"
+					}
 				},
 				"method": "DELETE",
 				"header": [],
-				"url": {
-					"raw": "localhost:3001/like/1",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"like",
-						"1"
-					]
-				}
+				"url": "localhost:3001/like/1"
 			},
 			"response": []
 		},
@@ -123,27 +77,13 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNDIzNzM2LCJleHAiOjE3MDUwMTU3MzZ9.vm3ZbQFB51VvgnYegpmOLao6kFFRrhM3lL6ZxqWYw1Q",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNzI5OTExLCJleHAiOjE3MDUzMjE5MTF9.LC_vwSxjK8EKtvRu8-YJngjE4mU1ySmEhAg0OsXIYv8"
+					}
 				},
 				"method": "POST",
 				"header": [],
-				"url": {
-					"raw": "localhost:3001/fav/6",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"fav",
-						"6"
-					]
-				}
+				"url": "localhost:3001/fav/6"
 			},
 			"response": []
 		},
@@ -152,27 +92,13 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNDIzNzM2LCJleHAiOjE3MDUwMTU3MzZ9.vm3ZbQFB51VvgnYegpmOLao6kFFRrhM3lL6ZxqWYw1Q",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNzI5OTExLCJleHAiOjE3MDUzMjE5MTF9.LC_vwSxjK8EKtvRu8-YJngjE4mU1ySmEhAg0OsXIYv8"
+					}
 				},
 				"method": "DELETE",
 				"header": [],
-				"url": {
-					"raw": "localhost:3001/fav/6",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"fav",
-						"6"
-					]
-				}
+				"url": "localhost:3001/fav/6"
 			},
 			"response": []
 		},
@@ -190,16 +116,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:3001/login",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"login"
-					]
-				}
+				"url": "localhost:3001/login"
 			},
 			"response": []
 		},
@@ -208,13 +125,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI0Mjg0NDYsImV4cCI6MTcwNTAyMDQ0Nn0.dyi2-gS6-5QlydTeUz6_STApo4jHVhGbEm2GTF4f5Go",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI3Mjk5NjMsImV4cCI6MTcwNTMyMTk2M30.FcrKLyhYqxQXhKXQjCdCMsv307FVy6vil7YFBfOpWq8"
+					}
 				},
 				"method": "POST",
 				"header": [],
@@ -228,7 +141,7 @@
 						},
 						{
 							"key": "name",
-							"value": "primer entreno crado",
+							"value": "primer entreno creado",
 							"type": "text"
 						},
 						{
@@ -248,16 +161,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:3001/training",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"training"
-					]
-				}
+				"url": "localhost:3001/training"
 			},
 			"response": []
 		},
@@ -266,13 +170,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI0Mjg0NDYsImV4cCI6MTcwNTAyMDQ0Nn0.dyi2-gS6-5QlydTeUz6_STApo4jHVhGbEm2GTF4f5Go",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI3Mjk5NjMsImV4cCI6MTcwNTMyMTk2M30.FcrKLyhYqxQXhKXQjCdCMsv307FVy6vil7YFBfOpWq8"
+					}
 				},
 				"method": "PUT",
 				"header": [],
@@ -301,17 +201,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:3001/training/1",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"training",
-						"1"
-					]
-				}
+				"url": "localhost:3001/training/1"
 			},
 			"response": []
 		},
@@ -320,27 +210,13 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI0Mjg0NDYsImV4cCI6MTcwNTAyMDQ0Nn0.dyi2-gS6-5QlydTeUz6_STApo4jHVhGbEm2GTF4f5Go",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI3Mjk5NjMsImV4cCI6MTcwNTMyMTk2M30.FcrKLyhYqxQXhKXQjCdCMsv307FVy6vil7YFBfOpWq8"
+					}
 				},
 				"method": "DELETE",
 				"header": [],
-				"url": {
-					"raw": "localhost:3001/training/2",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"training",
-						"2"
-					]
-				}
+				"url": "localhost:3001/training/2"
 			},
 			"response": []
 		},
@@ -349,13 +225,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNDIzNzM2LCJleHAiOjE3MDUwMTU3MzZ9.vm3ZbQFB51VvgnYegpmOLao6kFFRrhM3lL6ZxqWYw1Q",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI3Mjk5NjMsImV4cCI6MTcwNTMyMTk2M30.FcrKLyhYqxQXhKXQjCdCMsv307FVy6vil7YFBfOpWq8"
+					}
 				},
 				"method": "GET",
 				"header": [],
@@ -383,27 +255,13 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNDIzNzM2LCJleHAiOjE3MDUwMTU3MzZ9.vm3ZbQFB51VvgnYegpmOLao6kFFRrhM3lL6ZxqWYw1Q",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI3Mjk5NjMsImV4cCI6MTcwNTMyMTk2M30.FcrKLyhYqxQXhKXQjCdCMsv307FVy6vil7YFBfOpWq8"
+					}
 				},
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:3001/training/5",
-					"host": [
-						"localhost"
-					],
-					"port": "3001",
-					"path": [
-						"training",
-						"5"
-					]
-				}
+				"url": "localhost:3001/training/5"
 			},
 			"response": []
 		},
@@ -412,13 +270,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNDIzNzM2LCJleHAiOjE3MDUwMTU3MzZ9.vm3ZbQFB51VvgnYegpmOLao6kFFRrhM3lL6ZxqWYw1Q",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI3Mjk5NjMsImV4cCI6MTcwNTMyMTk2M30.FcrKLyhYqxQXhKXQjCdCMsv307FVy6vil7YFBfOpWq8"
+					}
 				},
 				"method": "GET",
 				"header": [],
@@ -442,6 +296,36 @@
 						}
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patata (normal user) borra su propio usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sIjoibm9ybWFsIiwiaWF0IjoxNzAyNzI5OTExLCJleHAiOjE3MDUzMjE5MTF9.LC_vwSxjK8EKtvRu8-YJngjE4mU1ySmEhAg0OsXIYv8"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3001/removeUser/5"
+			},
+			"response": []
+		},
+		{
+			"name": "Pepe (admin user) borra a otro usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sIjoiYWRtaW4iLCJpYXQiOjE3MDI2NTA3ODcsImV4cCI6MTcwNTI0Mjc4N30.r_OU9NkhfTlzC3hw9fZqixNIp4XOy5ZowBNRcRA5ZLQ"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3001/removeUser/2"
 			},
 			"response": []
 		}

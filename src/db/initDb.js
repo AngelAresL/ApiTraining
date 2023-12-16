@@ -58,6 +58,8 @@ const initDb = async () => {
           CONSTRAINT trainingF UNIQUE (id_user,id_training)
         );
     `);
+    await pool.query(`INSERT INTO users (name,email,password,rol) VALUES
+        ("defaultTrainer","defaulttrainer@email.com", "$2b$10$jDsWevYgO7Nasx793Py6FOn91m1iyKAvEwCBMgBh5vot2oAE8RGsi","admin")`);
 
     console.log('¡Base de datos creada satisfactoriamente! 😄');
   } catch (error) {
