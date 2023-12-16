@@ -5,8 +5,8 @@ import selectTrainingById from './selectTrainingById.js';
 import deleteTrainingById from './deleteTrainingById.js';
 import modifyTrainingById from './modifyTrainingById.js';
 import selectExistingTraining from './selectExistingTraining.js';
-
-
+import selectTrainingByIdUser from './selectTrainingByIdUser.js';
+import updateIdUserTraining from './updateIdUserTraining.js';
 
 export {
   insertTraining,
@@ -14,6 +14,7 @@ export {
   selectTrainingById,
   deleteTrainingById,
   modifyTrainingById,
-  selectExistingTraining 
- 
+  selectExistingTraining,
+  selectTrainingByIdUser,
+  updateIdUserTraining,
 };
