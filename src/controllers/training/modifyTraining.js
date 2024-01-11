@@ -16,18 +16,18 @@ const modifyTraining = async (req, res, next) => {
     const crudeData = req.files;
     const { name, description, typology, muscle_group } = req.body;
     let photoTrainingName;
-    const loggedUserRol = req.auth.rol;
-     // Hacemos la llamada al helper de validación del numero entero
+    // const loggedUserRol = req.auth.rol;
+    // Hacemos la llamada al helper de validación del numero entero
     validateInt('trainingId no válido.', trainingId);
 
     await validateJoiTraining({ name, description, typology, muscle_group });
-
-    if (loggedUserRol !== 'admin') {
-      generateError(
-        'Debes ser administrador para modificar entrenamientos',
-        403
-      );
-    }
+    //Ahora se usa el midlleware isAdmin para chekear-----------
+    // if (loggedUserRol !== 'admin') {
+    //   generateError(
+    //     'Debes ser administrador para modificar entrenamientos',
+    //     403
+    //   );
+    // }
     // Comprobamos que el entrenamiento existe
     const existingTraining = await selectTrainingById(trainingId);
     if (!existingTraining) {

@@ -1,6 +1,10 @@
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
-import { insertUser, selectUserByEmail } from '../../models/users/index.js';
+import {
+  insertUser,
+  selectUserByEmail,
+  selectUserById,
+} from '../../models/users/index.js';
 import { generateError } from '../../helpers/index.js';
 import sendMailUtil from '../../helpers/sendMailUtil.js';
 
@@ -33,7 +37,8 @@ const register = async (req, res, next) => {
     const { value } = schema.validate(req.body);
 
     // Desestructuro los datos validados
-    let { name, email, password, rol } = value;
+    // let { name, email, password, rol } = value;
+    let { name, email, password } = value;
 
     // Compruebo si el correo electrónico ya existe
     const emailExists = await selectUserByEmail(email);
@@ -41,15 +46,14 @@ const register = async (req, res, next) => {
       generateError('Ya existe un usuario con este email 😥.', 409);
     }
 
-    if (rol != 'admin') {
-      rol = 'normal';
-    }
-
     // Genero el hash de la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Inserto el usuario en la base de datos
-    const insertId = await insertUser(name, email, hashedPassword, rol);
+    // const insertId = await insertUser(name, email, hashedPassword, rol)--------
+    const insertId = await insertUser(name, email, hashedPassword);
+    //Buscamos en la base de datos el nuevo usuario registrado-----------  
+    const newUser = await selectUserById(insertId);
 
     // Configuro el asunto y cuerpo del correo electrónico
     const emailSubject = 'Gracias por registrarte en nuestra plataforma 🦾';
@@ -62,7 +66,12 @@ const register = async (req, res, next) => {
     // Respondo con éxito
     res.status(201).send({
       message: 'Registro completado con éxito ✌️',
-      data: { id: insertId, name, email, rol },
+      data: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+        rol: newUser.rol,
+      },
     });
   } catch (error) {
     next(error);

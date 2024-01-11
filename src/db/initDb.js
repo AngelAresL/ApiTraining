@@ -15,7 +15,7 @@ const initDb = async () => {
             email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
             rol ENUM('admin','normal') DEFAULT 'normal',          
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     `);
 
@@ -27,8 +27,8 @@ const initDb = async () => {
             photo VARCHAR(100) DEFAULT "defaultAvatar.jpg",           
             typology VARCHAR(50) NOT NULL,
             muscle_group VARCHAR(50) NOT NULL,
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,    
-            modifyAt DATETIME DEFAULT CURRENT_TIMESTAMP,       
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,    
+            modify_at DATETIME DEFAULT CURRENT_TIMESTAMP,       
             id_user INT UNSIGNED NOT NULL,
             FOREIGN KEY (id_user) REFERENCES users (id)
         );
@@ -38,11 +38,12 @@ const initDb = async () => {
         CREATE TABLE IF NOT EXISTS likes (
           id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
           id_user INT UNSIGNED NOT NULL,
-          id_training INT UNSIGNED NOT NULL,
-          createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-          FOREIGN KEY (id_user) REFERENCES users (id),
-          FOREIGN KEY (id_training) REFERENCES training (id),
+          id_training INT UNSIGNED NOT NULL ,
+          created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+          FOREIGN KEY (id_user) REFERENCES users (id) ON DELETE CASCADE,
+          FOREIGN KEY (id_training) REFERENCES training (id) ON DELETE CASCADE,
           CONSTRAINT trainingF UNIQUE (id_user,id_training)
+          
 
         );
     `);
@@ -52,14 +53,15 @@ const initDb = async () => {
           id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
           id_user INT UNSIGNED NOT NULL,
           id_training INT UNSIGNED NOT NULL,
-          createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-          FOREIGN KEY (id_user) REFERENCES users (id),
-          FOREIGN KEY (id_training) REFERENCES training (id),
+          created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+          FOREIGN KEY (id_user) REFERENCES users (id) ON DELETE CASCADE,
+          FOREIGN KEY (id_training) REFERENCES training (id) ON DELETE CASCADE,
           CONSTRAINT trainingF UNIQUE (id_user,id_training)
+          
         );
     `);
-    await pool.query(`INSERT INTO users (name,email,password,rol) VALUES
-        ("defaultTrainer","defaulttrainer@email.com", "$2b$10$jDsWevYgO7Nasx793Py6FOn91m1iyKAvEwCBMgBh5vot2oAE8RGsi","admin")`);
+    // await pool.query(`INSERT INTO users (name,email,password,rol) VALUES
+    //     ("defaultTrainer","defaulttrainer@email.com", "$2b$10$jDsWevYgO7Nasx793Py6FOn91m1iyKAvEwCBMgBh5vot2oAE8RGsi","admin")`);
 
     console.log('¡Base de datos creada satisfactoriamente! 😄');
   } catch (error) {

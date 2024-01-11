@@ -5,18 +5,19 @@ import { deleteTrainingById,selectTrainingById } from '../../models/training/ind
 
 const deleteTraining = async (req, res, next) => {
   try {
-    const rol = req.auth.rol;
+    // const rol = req.auth.rol;
     const trainingId = req.params.idtraining;
      // Hacemos la llamada al helper de validación del numero entero
     validateInt('trainingId no válido.', trainingId);
 
     // Comprobar que el usuario del token es admin.
-    if (rol !== 'admin') {
-       generateError(
-        'No tienes permisos de administrador para borrar este entreno.',
-        403
-      );
-    }
+     //Ahora se usa el midlleware isAdmin para chekear-----------
+    // if (rol !== 'admin') {
+    //    generateError(
+    //     'No tienes permisos de administrador para borrar este entreno.',
+    //     403
+    //   );
+    // }
     //Comprobamos si el idtraining existe
     const trainingExists = await selectTrainingById(trainingId);
     if(!trainingExists){

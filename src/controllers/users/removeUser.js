@@ -24,7 +24,7 @@ const removeUser = async (req, res, next) => {
     if (userTarget == 1) {
       generateError('Ese usuario no puede ser eliminado.', 403);
     }
-
+//Revisar para implantar el nuevo middleware isAdmin-------------
     // Comprobamos que el usuario del token es admin.
     if (loggedUserRol === 'admin') {
       //Comprobamos si existen entranamientos creados con el id del usuario a borrar

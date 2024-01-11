@@ -5,18 +5,19 @@ import { TOKEN_SECRET } from '../../env.js';
 
 const validateAuthLink = (req, res, next) => {
   try {
-    const { authorization } = req.params.token;
+    const authorization = req.params.token;
+    console.log(authorization);
 
-    if (!authorization) {
-      generateError("El header 'authorization' es requerido", 401);
-    }
+    // if (!authorization) {
+    //   generateError("El header 'authorization' es requerido", 401);
+    // }
 
-    const [tokenType, token] = authorization.split(' ');
+    // const [tokenType, token] = authorization.split(' ');
 
-    if (tokenType !== 'Bearer') {
-      generateError("El token debe ser de tipo 'Bearer'", 400);
-    }
-
+    // if (tokenType !== 'Bearer') {
+    //   generateError("El token debe ser de tipo 'Bearer'", 400);
+    // }
+    const token = authorization;
     let tokenPayload;
 
     try {
