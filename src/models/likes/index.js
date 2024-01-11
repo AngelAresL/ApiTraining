@@ -3,7 +3,7 @@ import insertLike from './insertLike.js';
 import deleteLikeById from './deleteLikeById.js';
 import selectLike from './selectLike.js';
 import selectLikeById from './selectLikeById.js';
-import selectAllLikes from './selectAllLikes.js';
 
 
-export { insertLike, deleteLikeById, selectLike, selectLikeById,selectAllLikes};
+
+export { insertLike, deleteLikeById, selectLike, selectLikeById};

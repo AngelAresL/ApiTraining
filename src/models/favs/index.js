@@ -2,6 +2,6 @@
 import addFavById from './addFavById.js';
 import getFavByUser from './getFavByUser.js';
 import removeFavById from './removeFavById.js';
-import selectAllFavorites from './selectAllFavorites.js'
 
-export {addFavById,getFavByUser,removeFavById,selectAllFavorites}
+
+export {addFavById,getFavByUser,removeFavById}

@@ -13,7 +13,7 @@ const createTraining = async (req, res, next) => {
   try {
     // const loggedUserRol = req.auth.rol;
     //Teniamos hardcodeado el id
-    const loggedUserId = req.auth.id;
+    const loggedUserId = null;
     const crudeData = req.files;
     let photoTrainingName;
     const { name, description, typology, muscle_group } = req.body;
@@ -29,7 +29,7 @@ const createTraining = async (req, res, next) => {
     //     401
     //   );
     // }
-    //Comprueba si el usuario adjunta imagen 
+    //Comprueba si el usuario adjunta imagen
     if (req.files && req.files.image) {
       //llama a funcion de guaradar imagen
       photoTrainingName = await saveImage(crudeData);
@@ -42,7 +42,7 @@ const createTraining = async (req, res, next) => {
       typology,
       muscle_group
     );
-    
+
     if (trainingId) {
       generateError('El entrenamiento que intentas crear ya existe.', 409);
     }

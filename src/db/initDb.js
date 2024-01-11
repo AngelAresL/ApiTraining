@@ -19,6 +19,20 @@ const initDb = async () => {
         )
     `);
 
+    // await pool.query(`
+    //     CREATE TABLE IF NOT EXISTS training (
+    //         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    //         name VARCHAR(50) NOT NULL,
+    //         description VARCHAR(200) NOT NULL,
+    //         photo VARCHAR(100) DEFAULT "defaultAvatar.jpg",
+    //         typology VARCHAR(50) NOT NULL,
+    //         muscle_group VARCHAR(50) NOT NULL,
+    //         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    //         modify_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    //         id_user INT UNSIGNED NOT NULL,
+    //         FOREIGN KEY (id_user) REFERENCES users (id)
+    //     );
+    // `);
     await pool.query(`
         CREATE TABLE IF NOT EXISTS training (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -29,8 +43,8 @@ const initDb = async () => {
             muscle_group VARCHAR(50) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,    
             modify_at DATETIME DEFAULT CURRENT_TIMESTAMP,       
-            id_user INT UNSIGNED NOT NULL,
-            FOREIGN KEY (id_user) REFERENCES users (id)
+            id_user INT UNSIGNED 
+            
         );
     `);
 
