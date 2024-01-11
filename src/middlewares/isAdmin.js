@@ -7,9 +7,7 @@ const isAdmin = async (req, res, next) => {
     const user = await selectUserById(req.auth.id);
     console.log("rol de usuario",user.rol);
     if (user.rol==="normal") {
-        generateError("El usuario debe ser administrador para realizar esta tarea",400)
-
-        
+        generateError("El usuario debe ser administrador para realizar esta tarea",400)        
     }
 
     next();

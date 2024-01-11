@@ -13,7 +13,6 @@ const router = express.Router();
 //Ruta para crear un entrenamiento.
 router.post('/training', validateAuth, isAdmin, createTraining);
 //Rutas para borrar un entrenamiento.
-router.delete('/training', validateAuth, isAdmin, deleteTraining);
 router.delete('/training/:idtraining', validateAuth, isAdmin, deleteTraining);
 //Ruta para modifcar un entrenamiento.
 router.put('/training/:idtraining', validateAuth, isAdmin, modifyTraining);

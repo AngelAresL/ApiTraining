@@ -52,6 +52,7 @@ const register = async (req, res, next) => {
     // Inserto el usuario en la base de datos
     // const insertId = await insertUser(name, email, hashedPassword, rol)--------
     const insertId = await insertUser(name, email, hashedPassword);
+    
     //Buscamos en la base de datos el nuevo usuario registrado-----------  
     const newUser = await selectUserById(insertId);
 

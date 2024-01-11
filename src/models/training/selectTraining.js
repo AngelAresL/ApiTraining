@@ -1,7 +1,8 @@
 import pool from '../../db/pool.js';
 // Función para listar todos los entrenamientos, podemos además filtrar por tipologia, grupo muscular y ordenar por fecha o nombre  con query strings
 const selectTraining = async ({ typology, name, muscle_group, createdAt }) => {
-  let sqlQuery = 'SELECT name, description, photo, typology, muscle_group, createdAt FROM training';
+  let sqlQuery = 'SELECT count(*) AS likes, name, description, photo, typology, muscle_group, createdAt FROM training';
+
   const sqlValues = [];
   let sqlClause = 'WHERE';
 
