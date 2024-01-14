@@ -1,5 +1,8 @@
+import path from 'path';
+import fs from 'fs/promises';
+import { UPLOADS_DIR } from '../../../env.js';
 import {
-  existingData,
+  existingTraining,
   generateError,
   saveImage,
   validateJoiTraining,
@@ -20,7 +23,7 @@ const modifyTraining = async (req, res, next) => {
     // Hacemos la llamada al helper de validación del numero entero
     validateInt('trainingId no válido.', trainingId);
 
-    await validateJoiTraining({ name, description, typology, muscle_group });
+    validateJoiTraining({ name, description, typology, muscle_group });
     //Ahora se usa el midlleware isAdmin para chekear-----------
     // if (loggedUserRol !== 'admin') {
     //   generateError(
@@ -29,23 +32,31 @@ const modifyTraining = async (req, res, next) => {
     //   );
     // }
     // Comprobamos que el entrenamiento existe
-    const existingTraining = await selectTrainingById(trainingId);
-    if (!existingTraining) {
+    const training = await selectTrainingById(trainingId);
+    if (!training) {
       generateError('El entrenamiento no existe.', 404);
     }
 
-    existingData(
-      req.body,
-      existingTraining,
-      'Debes cambiar algún dato del entrenamiento.'
-    );
+    // existingTraining(
+    //   req.body,
+    //   training,
+    //   'Debes cambiar algún dato del entrenamiento.'
+    // );
 
     //Comprueba si existe imagen
     if (req.files && req.files.image) {
+      //Si modificamos la foto, se elimina la foto anteriormente guardada
+      const routeImage = path.resolve(UPLOADS_DIR, training.photo);
+      await fs.unlink(routeImage);
       //llama a funcion de guaradar imagen
       photoTrainingName = await saveImage(crudeData);
     } else {
-      photoTrainingName = 'defaultAvatar.jpg';
+      existingTraining(
+        req.body,
+        training,
+        'Debes cambiar algún dato del entrenamiento.'
+      );
+      photoTrainingName = training.photo;
     }
 
     // Update de training en la base de datos

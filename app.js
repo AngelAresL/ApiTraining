@@ -12,7 +12,6 @@ import {
   trainingRoutes,
   likeRoutes,
   favRoutes,
-  sortRoutes,
 } from './src/routes/index.js';
 
 const app = express();
@@ -39,7 +38,6 @@ app.use(userRoutes);
 app.use(trainingRoutes);
 app.use(likeRoutes);
 app.use(favRoutes);
-app.use(sortRoutes);
 
 //middlewares de manejo de errores y pagina no encontrada
 

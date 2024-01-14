@@ -8,13 +8,14 @@ import {
 // Borrar el entreno de favoritos
 const removeUser = async (req, res, next) => {
   try {
-    const loggedUserRol = req.auth.rol;
+    // const loggedUserRol = req.auth.rol;
 
     const loggedUserId = req.auth.id;
-    const userTarget = req.params.id;
+    const userTarget = parseInt(req.params.id);
 
     // Hacemos la llamada al helper de validación del numero entero
     validateInt('Usuario no válido', userTarget);
+
     const userExists = await selectUserById(userTarget);
     // Comprobamos que el usuario exista
     if (!userExists) {
@@ -48,8 +49,9 @@ const removeUser = async (req, res, next) => {
     //     await removeUserById(userTarget);
     //   }
     // }
-    
-    if (loggedUserId != userTarget && userExists.rol === 'normal') {
+    const userExists2 = await selectUserById(loggedUserId)
+
+    if (loggedUserId != userTarget && userExists2.rol === 'normal') {
       generateError(
         'No tienes permisos de administrador para borrar usuarios ajenos.',
         403

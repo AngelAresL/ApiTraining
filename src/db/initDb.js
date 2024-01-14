@@ -56,7 +56,7 @@ const initDb = async () => {
           created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (id_user) REFERENCES users (id) ON DELETE CASCADE,
           FOREIGN KEY (id_training) REFERENCES training (id) ON DELETE CASCADE,
-          CONSTRAINT trainingF UNIQUE (id_user,id_training)
+          CONSTRAINT training_likes UNIQUE (id_user,id_training)
           
 
         );
@@ -70,7 +70,7 @@ const initDb = async () => {
           created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (id_user) REFERENCES users (id) ON DELETE CASCADE,
           FOREIGN KEY (id_training) REFERENCES training (id) ON DELETE CASCADE,
-          CONSTRAINT trainingF UNIQUE (id_user,id_training)
+          CONSTRAINT training_favs UNIQUE (id_user,id_training)
           
         );
     `);

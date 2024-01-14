@@ -4,7 +4,7 @@ import sendMailUtil from './sendMailUtil.js';
 import createPathIfNotExist from './createPath.js';
 import saveImage from './saveImage.js';
 import validateJoiTraining from './validateJoiTraining.js';
-import existingData from './existingTraining.js';
+import existingTraining from './existingTraining.js';
 import validateInt from './regexInt.js';
 
 export {
@@ -13,6 +13,6 @@ export {
   createPathIfNotExist,
   saveImage,
   validateJoiTraining,
-  existingData,
+  existingTraining,
   validateInt,
 };

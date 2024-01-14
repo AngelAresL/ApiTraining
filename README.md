@@ -50,8 +50,8 @@ Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesar
   - photo (Opcional)
   - typology
   - muscle_group
-  - createdAt
-  - modifyAt
+  - created_at
+  - modify_at
   - id_user
 
 - Favorites:
@@ -59,13 +59,13 @@ Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesar
   - id
   - id_user
   - id_training
-  - createdAt
+  - created_at
 
 - Likes:
   - id
   - id_user
   - id_training
-  - createdAt
+  - created_at
 
 ## Endpoints
 

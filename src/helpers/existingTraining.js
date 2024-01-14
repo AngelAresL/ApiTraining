@@ -1,6 +1,6 @@
 import { generateError } from './index.js';
 // Comprobamos que el entrenamiento exista
-const existingData = (bodyData, existingData, error) => {
+const existingTraining = (bodyData, existingData, error) => {
   const { name, description, typology, muscle_group } = bodyData;
 
   if (
@@ -12,4 +12,4 @@ const existingData = (bodyData, existingData, error) => {
     generateError(error, 400);
   }
 };
-export default existingData;
+export default existingTraining;
