@@ -4,8 +4,6 @@ import { generateError } from '../../helpers/index.js';
 // Función para que un usuario pueda elminarse a sí mismo.
 const removeUserById = async (id_user) => {
   try {
-    // Primero borramos
-
     await pool.query('DELETE FROM likes WHERE id_user = ?', [id_user]);
     await pool.query('DELETE FROM favorites WHERE id_user = ?', [id_user]);
     await pool.query('DELETE FROM users WHERE id = ?', [id_user]);

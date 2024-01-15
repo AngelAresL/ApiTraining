@@ -11,9 +11,7 @@ import {
 
 const createTraining = async (req, res, next) => {
   try {
-    // const loggedUserRol = req.auth.rol;
-    //Teniamos hardcodeado el id
-    const loggedUserId = null;
+    const loggedUserId = req.auth.id;
     const crudeData = req.files;
     let photoTrainingName;
     const { name, description, typology, muscle_group } = req.body;
@@ -21,14 +19,6 @@ const createTraining = async (req, res, next) => {
     //Validacion de Joi
     await validateJoiTraining({ name, description, typology, muscle_group });
 
-    //Ahora se usa el midlleware isAdmin para chekear-----------
-
-    // if (loggedUserRol != 'admin') {
-    //   generateError(
-    //     'Necesario credencial de administrador para realizar esta tarea.',
-    //     401
-    //   );
-    // }
     //Comprueba si el usuario adjunta imagen
     if (req.files && req.files.image) {
       //llama a funcion de guaradar imagen
