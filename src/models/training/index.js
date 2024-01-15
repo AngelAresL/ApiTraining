@@ -7,6 +7,7 @@ import modifyTrainingById from './modifyTrainingById.js';
 import selectExistingTraining from './selectExistingTraining.js';
 import selectTrainingByIdUser from './selectTrainingByIdUser.js';
 import updateIdUserTraining from './updateIdUserTraining.js';
+import selectTrainingByIdAllLikes from './selectTrainingByIdAllLikes.js'
 
 export {
   insertTraining,
@@ -17,4 +18,5 @@ export {
   selectExistingTraining,
   selectTrainingByIdUser,
   updateIdUserTraining,
+  selectTrainingByIdAllLikes
 };
