@@ -1,4 +1,6 @@
+
 import { selectTrainingByIdAllLikes } from '../../models/training/index.js';
+
 import { generateError, validateInt } from '../../helpers/index.js';
 
 const searchTrainingById = async (req, res, next) => {
@@ -7,7 +9,9 @@ const searchTrainingById = async (req, res, next) => {
      // Hacemos la llamada al helper de validación del numero entero
     validateInt('trainingId no válido.', trainingId);
 
+
     const training = await selectTrainingByIdAllLikes(trainingId);
+
     if (!training) {
       generateError("El entreno que buscas no existe",404)
       
