@@ -9,7 +9,7 @@ import selectTrainingByIdUser from './selectTrainingByIdUser.js';
 import updateIdUserTraining from './updateIdUserTraining.js';
 import selectTrainingByIdAllLikes from './selectTrainingByIdAllLikes.js'
 
-import selectTrainingById_2 from './selectTrainingById_2.js';
+
 
 export {
   insertTraining,
