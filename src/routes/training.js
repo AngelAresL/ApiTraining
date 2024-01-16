@@ -17,8 +17,8 @@ router.delete('/training/:idtraining', validateAuth, isAdmin, deleteTraining);
 //Ruta para modifcar un entrenamiento.
 router.put('/training/:idtraining', validateAuth, isAdmin, modifyTraining);
 //Ruta para ordenar y filtrar entrenamientos.
-router.get('/training', searchTraining);
+router.get('/training', validateAuth, searchTraining);
 //Ruta para seleccionar un entrenamiento.
-router.get('/training/:idtraining',validateAuth, searchTrainingById);
+router.get('/training/:idtraining', validateAuth, searchTrainingById);
 
 export default router;
