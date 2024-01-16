@@ -4,6 +4,9 @@ import selectUserByEmail from './selectUserByEmail.js';
 import selectUserById from './selectUserById.js';
 import modifyPasswordUser from './modifyPasswordUser.js';
 import removeUserById from './removeUserById.js';
+import temporaryPassword from './temporaryPassword.js';
+import deleteTemporaryPassword from './deleteTemporaryPassword.js';
+import selectUserByTempPass from './selectUserByTempPass.js';
 
 export {
   insertUser,
@@ -11,4 +14,7 @@ export {
   selectUserById,
   modifyPasswordUser,
   removeUserById,
+  temporaryPassword,
+  deleteTemporaryPassword,
+  selectUserByTempPass,
 };

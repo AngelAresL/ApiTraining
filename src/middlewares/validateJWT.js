@@ -9,6 +9,7 @@ const validateAuth = (req, res, next) => {
     if (!authorization) {
       generateError("El header 'authorization' es requerido", 401);
     }
+    console.log(authorization);
 
     const [tokenType, token] = authorization.split(' ');
 

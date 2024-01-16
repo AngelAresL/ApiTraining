@@ -17,7 +17,7 @@ router.post('/login', login);
 //Ruta para solicitar nueva contraseña de usuario.
 router.post('/loginForgot', forgotPassword);
 //Ruta para resetear la contraseña de usuario.
-router.patch('/loginReset/:token', validateAuthLink, resetPassword);
+router.patch('/loginReset/:temp', resetPassword);
 //Ruta para borrar a un usuario.
 router.delete('/removeUser/:id', validateAuth, removeUser);
 
