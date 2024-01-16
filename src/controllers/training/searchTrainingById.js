@@ -5,12 +5,15 @@ import { generateError, validateInt } from '../../helpers/index.js';
 
 const searchTrainingById = async (req, res, next) => {
   try {
+    
+     const loggedId= req.auth.id;
+  
     const trainingId = req.params.idtraining;
      // Hacemos la llamada al helper de validación del numero entero
     validateInt('trainingId no válido.', trainingId);
 
 
-    const training = await selectTrainingByIdAllLikes(trainingId);
+    const training = await selectTrainingByIdAllLikes(loggedId, trainingId);
 
     if (!training) {
       generateError("El entreno que buscas no existe",404)
