@@ -1,6 +1,11 @@
 import express from 'express';
 
-import { login, register, removeUser } from '../controllers/users/index.js';
+import {
+  login,
+  register,
+  removeUser,
+  verifyRole,
+} from '../controllers/users/index.js';
 
 import { validateAuthLink, validateAuth } from '../middlewares/index.js';
 import {
@@ -14,6 +19,8 @@ const router = express.Router();
 router.post('/register', register);
 //Ruta para logear a un usuario.
 router.post('/login', login);
+//Ruta para verificar y rol
+router.get('/verify', validateAuth, verifyRole);
 //Ruta para solicitar nueva contraseña de usuario.
 router.post('/loginForgot', forgotPassword);
 //Ruta para resetear la contraseña de usuario.

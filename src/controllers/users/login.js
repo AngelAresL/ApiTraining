@@ -23,7 +23,6 @@ const login = async (req, res, next) => {
     //Creamos el Payload con el id de users de la bbdd, y su rol. Despues generamos el TOKEN
     const payload = {
       id: userDb.id,
-      rol: userDb.rol,
     };
     const token = jwt.sign(payload, TOKEN_SECRET, {
       expiresIn: '30d',
@@ -32,7 +31,7 @@ const login = async (req, res, next) => {
     //Enviamos mensaje si todo ha ido bien
     res.send({
       message: 'Loggeado correctamente.',
-      data: { token },
+      token: token,
       rol: userDb.rol,
     });
   } catch (error) {
