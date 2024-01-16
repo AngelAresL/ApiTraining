@@ -1,7 +1,7 @@
 import pool from '../../db/pool.js';
 
 const selectTraining = async ({ name, typology, muscle_group, order_by }) => {
-  let sqlQuery = `SELECT count(l.id_training) AS allLikes, t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
+  let sqlQuery = `SELECT count(l.id_training) AS allLikes,t.id,  t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
   FROM training t
   LEFT JOIN likes l ON l.id_training = t.id `;
 
