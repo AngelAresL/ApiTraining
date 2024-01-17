@@ -10,7 +10,7 @@ const deleteTemporaryPassword = async (id) => {
       message: 'Borrado con éxito',
     };
   } catch (error) {
-    throw generateError(error, error.statusCode || 500);
+    generateError(error, error.statusCode || 500);
   }
 };
 export default deleteTemporaryPassword;
