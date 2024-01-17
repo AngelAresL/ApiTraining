@@ -33,6 +33,16 @@ const initDb = async () => {
             
         );
     `);
+    await pool.query(`
+    CREATE TABLE IF NOT EXISTS forgot_password (
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        temporary_pass VARCHAR(36) NOT NULL,
+        id_user INT UNSIGNED NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,         
+        FOREIGN KEY (id_user) REFERENCES users (id) ON DELETE CASCADE
+        
+    );
+`);
 
     await pool.query(`
         CREATE TABLE IF NOT EXISTS likes (

@@ -17,6 +17,7 @@ const {
   SMTP_USER,
   SMTP_PASS,
   UPLOADS_DIR,
+  SERVER_PORT_FRONT,
 } = process.env;
 
 export {
@@ -33,4 +34,5 @@ export {
   SMTP_USER,
   SMTP_PASS,
   UPLOADS_DIR,
+  SERVER_PORT_FRONT,
 };
