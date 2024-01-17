@@ -31,6 +31,7 @@ const login = async (req, res, next) => {
     //Enviamos mensaje si todo ha ido bien
     res.send({
       message: 'Loggeado correctamente.',
+      name: userDb.name,
       token: token,
       rol: userDb.rol,
     });

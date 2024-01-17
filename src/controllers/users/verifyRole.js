@@ -4,9 +4,9 @@ import { selectUserById } from '../../models/users/index.js';
 const verifyRole = async (req, res, next) => {
   try {
     const user = await selectUserById(req.auth.id);
-    console.log('rol de usuario', user.rol);
     res.send({
-      message: `El usuario es: ${user.rol}`,
+      message: `El usuario ${user.name} es: ${user.rol}`,
+      name: user.name,
       rol: user.rol,
     });
   } catch (error) {
