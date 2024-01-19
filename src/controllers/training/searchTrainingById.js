@@ -10,10 +10,10 @@ const searchTrainingById = async (req, res, next) => {
   
     const trainingId = req.params.idtraining;
      // Hacemos la llamada al helper de validación del numero entero
-    validateInt('trainingId no válido.', trainingId);
+    // validateInt('trainingId no válido.', trainingId);
 
 
-    const training = await selectTrainingByIdAllLikes(loggedId, trainingId);
+    const training = await selectTrainingByIdAllLikes(loggedId);
 
     if (!training) {
       generateError("El entreno que buscas no existe",404)
