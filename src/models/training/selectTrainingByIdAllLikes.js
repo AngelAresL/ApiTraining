@@ -9,8 +9,8 @@ const selectTrainingByIdAllLikes = async (loggedId) => {
 
     GROUP BY (t.id)
     `,
-    [loggedId, loggedId]  );
-    console.log(training);
+    [loggedId, loggedId]
+  );
 
   return training;
 };
