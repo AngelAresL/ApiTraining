@@ -19,6 +19,6 @@ router.put('/training/:idtraining', validateAuth, isAdmin, modifyTraining);
 //Ruta para ordenar y filtrar entrenamientos.
 router.get('/training', validateAuth, searchTraining);
 //Ruta para seleccionar un entrenamiento.
-router.get('/trainingDetails', validateAuth, searchTrainingById);
+router.get('/training/:idtraining', validateAuth, searchTrainingById);
 
 export default router;
