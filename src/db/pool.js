@@ -6,7 +6,7 @@ const pool = mysql.createPool({
   port: DB_PORT,
   user: DB_USER,
   password: DB_PASSWORD,
-  connectionLimit: 20,
+  connectionLimit: 5,
 });
 
 export default pool;
