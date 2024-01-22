@@ -19,9 +19,7 @@ const forgotPassword = async (req, res, next) => {
     const temporaryPass = uuidv4();
 
     await deleteTemporaryPassword(userDb.id);
-    const gg = await temporaryPassword(temporaryPass, userDb.id);
-
-    console.log(gg);
+    await temporaryPassword(temporaryPass, userDb.id);
 
     // Configuro el asunto y cuerpo del correo electrónico
     const emailSubject = 'Enlace para recuperacion de contraseña.';
@@ -34,7 +32,6 @@ const forgotPassword = async (req, res, next) => {
     res.send({
       message:
         'Le Hemos enviado un enlace a su mail para restablecer la contraseña.',
-      data: temporaryPass,
     });
   } catch (error) {
     next(error);
