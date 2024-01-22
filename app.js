@@ -29,8 +29,8 @@ app.use(morgan('dev'));
 // Middleware que indica a Express cuál es el directorio de ficheros estáticos------
 app.use(express.static(UPLOADS_DIR));
 
-// Selección de base de datos en la que trabajamos
-useDb();
+// // Selección de base de datos en la que trabajamos
+// useDb();
 
 //Rutas
 
