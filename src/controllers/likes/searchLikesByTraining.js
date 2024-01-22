@@ -8,13 +8,15 @@ const searchLikesByTraining = async (req, res, next) => {
   try {
     const trainingId = req.params.idtraining;
 
-    const training = await getCountLikesByTraining(trainingId);
+    const [totalLikes] = await getCountLikesByTraining(trainingId);
 
-    if (!training) {
+    if (!totalLikes) {
       generateError('El entreno que buscas no existe', 404);
     }
 
-    res.send({ message: 'Entrenamiento seleccionado', data: training });
+    res.send({ 
+      message: 'Total de likes', 
+      data: totalLikes.allLikes });
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,3 @@
-
-
 import {checkedFav} from '../../models/favs/index.js';
 
 const checkFav = async (req, res, next) => {
@@ -7,11 +5,11 @@ const checkFav = async (req, res, next) => {
     const trainingId = req.params.idtraining;
     const loggedId = req.auth.id;
 
-    const result= await checkedFav(loggedId, trainingId);
-    
+    const [result]= await checkedFav(loggedId, trainingId);
+
     res.status(200).json({
         message: `El usuario ${loggedId} añadio el entreno ${trainingId} a favorites`,
-        checkedFav: result,
+        data: result,
       });
 
   } catch (error) {

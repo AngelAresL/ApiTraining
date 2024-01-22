@@ -7,11 +7,11 @@ const checkLike = async (req, res, next) => {
     const loggedId = req.auth.id;
 
 
-    const result= await checkedLike(loggedId, trainingId);
+    const [result]= await checkedLike(loggedId, trainingId);
 
     res.status(200).json({
       message: `El usuario ${loggedId} dio like al entreno ${trainingId} a favorites`,
-      checkedLike: result,
+      data: result,
     });
 
   } catch (error) {
