@@ -32,9 +32,11 @@ const modifyTraining = async (req, res, next) => {
 
     //Comprueba si existe imagen
     if (req.files && req.files.image) {
-      //Si modificamos la foto, se elimina la foto anteriormente guardada
-      const routeImage = path.resolve(UPLOADS_DIR, training.photo);
-      await fs.unlink(routeImage);
+      if(training.photo!=="defaultAvatar.jpg"){
+          //Si modificamos la foto, se elimina la foto anteriormente guardada
+          const routeImage = path.resolve(UPLOADS_DIR, training.photo);
+          await fs.unlink(routeImage);
+      }    
       //llama a funcion de guaradar imagen
       photoTrainingName = await saveImage(crudeData);
     } else {
