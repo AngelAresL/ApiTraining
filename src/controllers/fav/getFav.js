@@ -8,7 +8,7 @@ const getFav = async (req, res, next) => {
 
     res.status(200).json({
       message: 'Listado de favoritos.',
-      fav_list: getFav,
+      data: getFav,
     });
   } catch (error) {
     next(error);
