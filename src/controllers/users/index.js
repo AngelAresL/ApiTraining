@@ -4,5 +4,6 @@ import login from './login.js';
 import register from './register.js';
 import removeUser from './removeUser.js';
 import modifyUser from './modifyUser.js'
+import getUser from './getUser.js'
 
-export { login, register, removeUser, verifyRole, modifyUser };
+export { login, register, removeUser, verifyRole, modifyUser, getUser };
