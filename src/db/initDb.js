@@ -1,10 +1,11 @@
 import pool from './pool.js';
+import poolDB from './poolDatabase.js'
 import useDb from './useDb.js';
 import { DB_NAME } from '../../env.js';
 // Creamos la base de datos
 const initDb = async () => {
   try {
-    await pool.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`);
+     await poolDB.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`);
 
     await useDb();
 
@@ -15,8 +16,9 @@ const initDb = async () => {
             email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
             rol ENUM('admin','normal') DEFAULT 'normal',          
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-        )
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,               
+            modify_at DATETIME DEFAULT CURRENT_TIMESTAMP  
+        );
     `);
 
     await pool.query(`

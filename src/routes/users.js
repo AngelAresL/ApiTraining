@@ -2,6 +2,7 @@ import express from 'express';
 
 import {
   login,
+  modifyUser,
   register,
   removeUser,
   verifyRole,
@@ -27,5 +28,7 @@ router.post('/loginForgot', forgotPassword);
 router.patch('/loginReset/:temp', resetPassword);
 //Ruta para borrar a un usuario.
 router.delete('/removeUser/:id', validateAuth, removeUser);
+//Ruta para modificar datos de un usuario
+router.put('/modify', validateAuth, modifyUser);
 
 export default router;
