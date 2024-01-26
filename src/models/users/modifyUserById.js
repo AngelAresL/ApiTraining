@@ -5,15 +5,14 @@ const modifyUserById = async (
   loggedUserId,
   name,
   email,
-  hashedPassword,
-  rol
+  hashedPassword  
 ) => {
   const [user] = await pool.query(
     `
         UPDATE users
-        SET name=?, email=?, password=?, rol=?, modify_at=CURRENT_TIMESTAMP 
+        SET name=?, email=?, password=?, modify_at=CURRENT_TIMESTAMP 
         WHERE id=?`,
-    [name, email, hashedPassword, rol, loggedUserId]
+    [name, email, hashedPassword, loggedUserId]
   );
 
   return user;

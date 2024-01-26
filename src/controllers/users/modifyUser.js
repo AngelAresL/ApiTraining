@@ -10,7 +10,7 @@ const modifyUser = async (req, res, next) => {
 
     //Validamos los datos de entrada con Joi
     const { value } = schema.validate(req.body);
-    let { name, email, password, rol } = value;
+    let { name, email, password } = value;
 
     // Genero el hash de la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -20,8 +20,7 @@ const modifyUser = async (req, res, next) => {
       loggedUserId,
       name,
       email,
-      hashedPassword,
-      rol
+      hashedPassword      
     );
     if (!userModified) {
       generateError('Error al actualizar los datos de usuario.', 400);
