@@ -8,6 +8,7 @@ import temporaryPassword from './temporaryPassword.js';
 import deleteTemporaryPassword from './deleteTemporaryPassword.js';
 import selectUserByTempPass from './selectUserByTempPass.js';
 import modifyRol from './modifyRol.js';
+import modifyUserById from './modifyUserById.js'
 
 export {
   insertUser,
@@ -19,4 +20,5 @@ export {
   deleteTemporaryPassword,
   selectUserByTempPass,
   modifyRol,
+  modifyUserById
 };

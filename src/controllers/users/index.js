@@ -6,6 +6,8 @@ import removeUser from './removeUserById.js';
 import rolToAdmin from './changeRolToAdmin.js';
 import rolToNormal from './changeRolToNormal.js';
 import removeUserByEmail from './removeUserByEmail.js';
+import modifyUser from './modifyUser.js'
+import getUser from './getUser.js'
 
 export {
   login,
@@ -15,4 +17,7 @@ export {
   rolToAdmin,
   rolToNormal,
   removeUserByEmail,
+  modifyUser, 
+  getUser,
 };
+
