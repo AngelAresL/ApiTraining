@@ -7,6 +7,7 @@ import removeUserById from './removeUserById.js';
 import temporaryPassword from './temporaryPassword.js';
 import deleteTemporaryPassword from './deleteTemporaryPassword.js';
 import selectUserByTempPass from './selectUserByTempPass.js';
+import modifyRol from './modifyRol.js';
 
 export {
   insertUser,
@@ -17,4 +18,5 @@ export {
   temporaryPassword,
   deleteTemporaryPassword,
   selectUserByTempPass,
+  modifyRol,
 };

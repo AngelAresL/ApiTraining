@@ -4,6 +4,8 @@ import {
   login,
   register,
   removeUser,
+  rolToAdmin,
+  rolToNormal,
   verifyRole,
 } from '../controllers/users/index.js';
 
@@ -27,5 +29,7 @@ router.post('/loginForgot', forgotPassword);
 router.patch('/loginReset/:temp', resetPassword);
 //Ruta para borrar a un usuario.
 router.delete('/removeUser/:id', validateAuth, removeUser);
+router.patch(`/rolToAdmin`, validateAuth, rolToAdmin);
+router.patch(`/rolToNormal`, validateAuth, rolToNormal);
 
 export default router;
