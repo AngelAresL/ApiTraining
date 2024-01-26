@@ -11,11 +11,11 @@ const modifyUser = async (req, res, next) => {
     //Validamos los datos de entrada con Joi
   
     const {value}=schema.validate(req.body);   
-    let { name, email } = value;
-    const password=req.body;
+    const { name, email } = value;
+    const {password}=req.body;
 
     //Recogemos los datos del usuario de la bbdd, si no modifica contraseña se deja la misma hasheada
-    const hashedPassword="";
+    let hashedPassword="";
     const userDb = await selectUserById(loggedUserId); 
     if(password===""){
        hashedPassword=userDb.password;
