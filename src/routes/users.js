@@ -4,6 +4,7 @@ import {
   login,
   register,
   removeUser,
+  removeUserByEmail,
   rolToAdmin,
   rolToNormal,
   verifyRole,
@@ -28,7 +29,9 @@ router.post('/loginForgot', forgotPassword);
 //Ruta para resetear la contraseña de usuario.
 router.patch('/loginReset/:temp', resetPassword);
 //Ruta para borrar a un usuario.
-router.delete('/removeUser/:id', validateAuth, removeUser);
+router.delete('/removeUser/', validateAuth, removeUser);
+router.delete('/removeUserByEmail/', validateAuth, removeUserByEmail);
+//Ruta para modificar rol de usuario
 router.patch(`/rolToAdmin`, validateAuth, rolToAdmin);
 router.patch(`/rolToNormal`, validateAuth, rolToNormal);
 
