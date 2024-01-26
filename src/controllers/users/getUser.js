@@ -15,10 +15,12 @@ const getUser = async (req, res, next) => {
     res.status(200).json({
       message: 'Datos usuario',
       data: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        password: user.password            
+        id:user.id,
+        name:user.name,
+        email:user.email,
+        password:user.password,
+        rol:user.rol
+
       },
     });
   } catch (error) {
