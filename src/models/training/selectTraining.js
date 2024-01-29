@@ -1,6 +1,6 @@
 import pool from '../../db/pool.js';
 
-const selectTraining = async ({ name, typology, muscle_group, order_by }) => {
+const selectTraining = async ({ name, typology, muscle_group, order_by, offset, pageSize }) => {
   let sqlQuery = `SELECT count(l.id_training) AS allLikes,t.id,  t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
   FROM training t
   LEFT JOIN likes l ON l.id_training = t.id `;
@@ -38,6 +38,9 @@ const selectTraining = async ({ name, typology, muscle_group, order_by }) => {
     sqlQuery += `ORDER BY allLikes DESC`;
   }
   //--------------------------------------------------------------------------------
+
+  sqlQuery += ` LIMIT ? OFFSET ?`;
+  sqlValues.push(parseInt(pageSize, 10), parseInt(offset, 10));
   const [training] = await pool.query(sqlQuery, sqlValues);
 
   return training;
