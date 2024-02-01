@@ -6,6 +6,7 @@ import {
   modifyTraining,
   searchTraining,
   searchTrainingById,
+  trainingInfo,
 } from '../controllers/training/index.js';
 
 const router = express.Router();
@@ -20,5 +21,8 @@ router.put('/training/:idtraining', validateAuth, isAdmin, modifyTraining);
 router.get('/training', validateAuth, searchTraining);
 //Ruta para seleccionar un entrenamiento.
 router.get('/training/:idtraining', validateAuth, searchTrainingById);
+
+//Ruta para traer toda la info de entrenos, likes y favs
+router.get('/trainingInfo', validateAuth, trainingInfo);
 
 export default router;
