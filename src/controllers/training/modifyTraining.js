@@ -23,7 +23,7 @@ const modifyTraining = async (req, res, next) => {
     // Hacemos la llamada al helper de validación del numero entero
     validateInt('trainingId no válido.', trainingId);
 
-    validateJoiTraining({ name, description, typology, muscle_group });
+    validateJoiTraining({ name, typology, muscle_group });
 
     const training = await selectTrainingById(trainingId);
     if (!training) {

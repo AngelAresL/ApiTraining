@@ -3,7 +3,6 @@ import { generateError } from './index.js';
 // Hacemos las correspondientes validaciones con un esquema de Joi 
 const validateJoiTraining = async ({
   name,
-  description,
   typology,
   muscle_group,
 }) => {
@@ -17,15 +16,15 @@ const validateJoiTraining = async ({
           400
         );
       }),
-    description: Joi.string()
-      .max(200)
-      .required()
-      .error(() => {
-        generateError(
-          'La descripción es obligatoria y tiene un máximo de 200 caracteres.',
-          400
-        );
-      }),
+    // description: Joi.string()
+    //   .max(200)
+    //   .required()
+    //   .error(() => {
+    //     generateError(
+    //       'La descripción es obligatoria y tiene un máximo de 200 caracteres.',
+    //       400
+    //     );
+    //   }),
     typology: Joi.string()
       .max(50)
       .required()
@@ -47,7 +46,6 @@ const validateJoiTraining = async ({
   });
   const validation = schema.validate({
     name,
-    description,
     typology,
     muscle_group,
   });
