@@ -1,4 +1,4 @@
-import { selectTrainingByIdAllLikes } from '../../models/training/index.js';
+import { selectTraining } from '../../models/training/index.js';
 
 const trainingInfo = async (req, res, next) => {
   const loggedId=req.auth.id;
@@ -6,7 +6,11 @@ const trainingInfo = async (req, res, next) => {
     const { page = 1, pageSize = 10 } = req.query;
     const offset = (page - 1) * pageSize;
 
-    const training = await selectTrainingByIdAllLikes(loggedId,pageSize,offset);
+    const training = await selectTraining({
+      ...req.query,
+      offset,
+      pageSize,
+    },loggedId);
 
     res.send({
       message: 'Entrenamientos seleccionados.',

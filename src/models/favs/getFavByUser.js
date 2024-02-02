@@ -1,11 +1,19 @@
 import pool from '../../db/pool.js';
 import { generateError } from '../../helpers/index.js';
 // Función para obtener la lista de favoritos del usuario .
-const getFavByUser = async (id_user) => {
+const getFavByUser = async (loggedId) => {
   try {
     const selectFav = await pool.query(
-      'SELECT training.id, training.name, training.description, training.photo, training.typology, training.muscle_group, training.created_at FROM favorites INNER JOIN training ON favorites.id_training = training.id WHERE favorites.id_user = ?;',
-      [id_user]
+      `SELECT count(l.id_training) AS allLikes, BIT_OR(l.id_user=?) AS likeTrue,  BIT_OR(f.id_user=?) AS favTrue, t.id, t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
+      FROM training t
+      LEFT JOIN likes l ON l.id_training = t.id	
+      LEFT JOIN favorites f ON f.id_training = t.id  
+      WHERE f.id_user = ?
+      GROUP BY (t.id);      
+      `,
+      [loggedId, loggedId, loggedId]
+      
+
     );
 
     return selectFav;
