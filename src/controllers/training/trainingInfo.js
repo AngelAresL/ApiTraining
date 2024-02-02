@@ -6,7 +6,7 @@ const trainingInfo = async (req, res, next) => {
     const { page = 1, pageSize = 10 } = req.query;
     const offset = (page - 1) * pageSize;
 
-    const training = await selectTrainingByIdAllLikes(loggedId);
+    const training = await selectTrainingByIdAllLikes(loggedId,pageSize,offset);
 
     res.send({
       message: 'Entrenamientos seleccionados.',

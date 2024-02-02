@@ -1,9 +1,10 @@
 import pool from '../../db/pool.js';
 
 const selectTraining = async ({ name, typology, muscle_group, order_by, offset, pageSize }) => {
-  let sqlQuery = `SELECT count(l.id_training) AS allLikes,t.id,  t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
+  let sqlQuery = `SELECT count(l.id_training) AS allLikes,BIT_OR(l.id_user=2) AS likeTrue,  BIT_OR(f.id_user=2) AS favTrue, t.id,  t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
   FROM training t
-  LEFT JOIN likes l ON l.id_training = t.id `;
+  LEFT JOIN likes l ON l.id_training = t.id 
+  LEFT JOIN favorites f ON f.id_training = t.id`;
 
   const sqlValues = [];
   let sqlClause = ' WHERE';
@@ -25,7 +26,7 @@ const selectTraining = async ({ name, typology, muscle_group, order_by, offset, 
     sqlValues.push(`%${muscle_group}%`);
   }
 
-  sqlQuery += `GROUP BY (t.id)`;
+  sqlQuery += ` GROUP BY (t.id)`;
   //--------------------------------------------------------------------------------
   if (order_by === 'name') {
     sqlQuery += `ORDER BY t.name`;
