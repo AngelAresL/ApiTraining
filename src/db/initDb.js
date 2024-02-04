@@ -36,6 +36,34 @@ const initDb = async () => {
         );
     `);
     await pool.query(`
+    CREATE TABLE IF NOT EXISTS 
+    routine (
+        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL,
+        description VARCHAR(200),
+        id_user INT UNSIGNED NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,    
+        modify_at DATETIME DEFAULT CURRENT_TIMESTAMP,       
+        FOREIGN KEY (id_user) REFERENCES users (id) ON DELETE CASCADE
+        
+    );
+`);
+await pool.query(`
+CREATE TABLE IF NOT EXISTS 
+routine_training (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_training INT UNSIGNED NOT NULL,
+    id_routine INT UNSIGNED NOT NULL,
+    reps INT NOT NULL,
+    series INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,    
+    modify_at DATETIME DEFAULT CURRENT_TIMESTAMP,       
+    FOREIGN KEY (id_training) REFERENCES training (id) ON DELETE CASCADE,
+    FOREIGN KEY (id_routine) REFERENCES routine (id) ON DELETE CASCADE
+    
+);
+`);
+    await pool.query(`
     CREATE TABLE IF NOT EXISTS forgot_password (
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         temporary_pass VARCHAR(36) NOT NULL,
