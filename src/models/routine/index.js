@@ -1,4 +1,4 @@
-import insertRoutine from './createRoutine';
-import selectRoutineById from './selectRoutineById';
+import insertRoutine from './createRoutine.js';
+import selectRoutineById from './selectRoutineById.js';
 
 export { insertRoutine,selectRoutineById };
