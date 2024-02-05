@@ -1,5 +1,7 @@
 import insertRoutine from './createRoutine.js';
 import selectRoutineById from './selectRoutineById.js';
 import selectAllRoutines from './selectAllRoutines.js';
+import addTrainingToRoutine from './addTrainingToRoutine.js';
+import selectTrainingToRoutine from './selectTrainingToRoutine.js';
 
-export { insertRoutine, selectRoutineById, selectAllRoutines };
+export { insertRoutine, selectRoutineById, selectAllRoutines,addTrainingToRoutine , selectTrainingToRoutine};
