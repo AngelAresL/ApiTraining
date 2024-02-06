@@ -6,6 +6,7 @@ import {
   createRoutine,
   getRoutineById,
   getRoutines,
+  modifyRepsAndSeries,
   searchTrainingRoutine,
 } from '../controllers/routine/index.js';
 
@@ -18,5 +19,6 @@ router.get('/getRoutine', validateAuth, getRoutines);
 router.get('/getRoutine/:id', validateAuth, getRoutineById);
 router.post('/addTrainingToRoutine/:idRoutine', validateAuth, addToRoutine);
 router.get('/getTrainingRoutine/:idRoutine',validateAuth,searchTrainingRoutine)
+router.patch('/modifyRoutine/:idRoutine',validateAuth,modifyRepsAndSeries)
 
 export default router;
