@@ -4,7 +4,7 @@ const searchTrainingRoutine = async (req, res, next) => {
   const idRoutine = req.params.idRoutine;
   try {
     const training = await selectTrainingToRoutine(idRoutine);
-    console.log(training);
+    // console.log(training);
 
     res.send({
       message: 'Entrenamientos de rutina seleccionados.',
