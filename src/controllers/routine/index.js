@@ -4,5 +4,6 @@ import getRoutineById from './getRoutineById.js';
 import addToRoutine from './addToRoutine.js';
 import searchTrainingRoutine from './searchTrainingRoutine.js';
 import modifyRepsAndSeries from './modifyRepsAndSeries.js';
+import sendPdf from './sendPdf.js';
 
-export { createRoutine, getRoutines, getRoutineById, addToRoutine,searchTrainingRoutine, modifyRepsAndSeries };
+export { createRoutine, getRoutines, getRoutineById, addToRoutine,searchTrainingRoutine, modifyRepsAndSeries, sendPdf };

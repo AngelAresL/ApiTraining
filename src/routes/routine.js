@@ -8,6 +8,7 @@ import {
   getRoutines,
   modifyRepsAndSeries,
   searchTrainingRoutine,
+  sendPdf,
 } from '../controllers/routine/index.js';
 
 const router = express.Router();
@@ -20,5 +21,6 @@ router.get('/getRoutine/:id', validateAuth, getRoutineById);
 router.post('/addTrainingToRoutine/:idRoutine', validateAuth, addToRoutine);
 router.get('/getTrainingRoutine/:idRoutine',validateAuth,searchTrainingRoutine)
 router.patch('/modifyRoutine/:idRoutine',validateAuth,modifyRepsAndSeries)
+router.post('/sendPdf',sendPdf)
 
 export default router;
