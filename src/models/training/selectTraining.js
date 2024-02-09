@@ -1,10 +1,13 @@
 import pool from '../../db/pool.js';
 
 const selectTraining = async (
-  { name, typology, muscle_group, order_by, offset, pageSize },
+  { name, typology, muscle_group, order_by },
   loggedId
 ) => {
-  let sqlQuery = `SELECT count(l.id_training) AS allLikes,BIT_OR(l.id_user=?) AS likeTrue,  BIT_OR(f.id_user=?) AS favTrue, t.id,  t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
+  let sqlQuery = `SELECT   
+  (SELECT COUNT(id_training) AS allLikes FROM likes WHERE id_training = t.id) AS allLikes,
+  BIT_OR(l.id_user=?) AS likeTrue,  BIT_OR(f.id_user=?) AS favTrue, 
+  t.id,  t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
   FROM training t
   LEFT JOIN likes l ON l.id_training = t.id 
   LEFT JOIN favorites f ON f.id_training = t.id`;
@@ -30,7 +33,7 @@ const selectTraining = async (
     sqlValues.push(`%${muscle_group}%`);
   }
 
-  sqlQuery += ` GROUP BY (t.id)`;
+  sqlQuery += ` GROUP BY (t.id )`;
   //--------------------------------------------------------------------------------
   if (order_by === 'name') {
     sqlQuery += `ORDER BY t.name`;
@@ -44,10 +47,6 @@ const selectTraining = async (
   }
   //--------------------------------------------------------------------------------
 
-  if (offset && pageSize) {
-    sqlQuery += ` LIMIT ? OFFSET ?`;
-    sqlValues.push(parseInt(pageSize, 10), parseInt(offset, 10));
-  }
   const [training] = await pool.query(sqlQuery, sqlValues);
 
   return training;

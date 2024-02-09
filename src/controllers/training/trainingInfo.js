@@ -3,13 +3,8 @@ import { selectTraining } from '../../models/training/index.js';
 const trainingInfo = async (req, res, next) => {
   const loggedId=req.auth.id;
   try {
-    const { page = 1, pageSize = 10 } = req.query;
-    const offset = (page - 1) * pageSize;
-
     const training = await selectTraining({
-      ...req.query,
-      offset,
-      pageSize,
+      ...req.query
     },loggedId);
 
     res.send({

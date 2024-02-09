@@ -7,7 +7,7 @@ import modifyTrainingById from './modifyTrainingById.js';
 import selectExistingTraining from './selectExistingTraining.js';
 import selectTrainingByIdUser from './selectTrainingByIdUser.js';
 import updateIdUserTraining from './updateIdUserTraining.js';
-import selectTrainingByIdAllLikes from './selectTrainingByIdAllLikes.js'
+
 
 
 
@@ -19,7 +19,7 @@ export {
   modifyTrainingById,
   selectExistingTraining,
   selectTrainingByIdUser,
-  updateIdUserTraining,
-  selectTrainingByIdAllLikes
+  updateIdUserTraining
+
 
 };
