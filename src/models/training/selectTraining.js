@@ -4,7 +4,10 @@ const selectTraining = async (
   { name, typology, muscle_group, order_by, offset, pageSize },
   loggedId
 ) => {
-  let sqlQuery = `SELECT count(l.id_training) AS allLikes,BIT_OR(l.id_user=?) AS likeTrue,  BIT_OR(f.id_user=?) AS favTrue, t.id,  t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
+  let sqlQuery = `SELECT   
+  (SELECT COUNT(id_training) AS allLikes FROM likes WHERE id_training = t.id) AS allLikes,
+  BIT_OR(l.id_user=?) AS likeTrue,  BIT_OR(f.id_user=?) AS favTrue, 
+  t.id,  t.name, t.description, t.photo, t.typology, t.muscle_group, t.created_at 
   FROM training t
   LEFT JOIN likes l ON l.id_training = t.id 
   LEFT JOIN favorites f ON f.id_training = t.id`;
