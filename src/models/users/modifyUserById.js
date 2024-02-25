@@ -1,12 +1,7 @@
 import pool from '../../db/pool.js';
 // Función para agregar un nuevo usuario.
 
-const modifyUserById = async (
-  loggedUserId,
-  name,
-  email,
-  hashedPassword  
-) => {
+const modifyUserById = async (loggedUserId, name, email, hashedPassword) => {
   const [user] = await pool.query(
     `
         UPDATE users

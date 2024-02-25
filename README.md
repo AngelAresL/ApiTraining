@@ -40,7 +40,8 @@ Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesar
   - email
   - password
   - rol : Adimn / Normal
-  - creaedAt
+  - created_at
+  - modify_at
 
 - Training:
 
@@ -81,17 +82,17 @@ Dispones de un archivo para pruebas en POSTMAN, para el uso del mismo es necesar
 - **DELETE / training** Borrar entrenamiento , sólo lo podrán hacer usuarios con Rol Admin
 - **DELETE / training/:idtraining** Borrar entrenamiento por Id seleccionado, sólo lo podrán hacer usuarios con Rol Admin
 - **PUT / training/:idtraining** Modificar entrenamiento por Id seleccionado, sólo lo podrán hacer usuarios con Rol Admin
-- **GET / training** Listar todos los entrenamientos, podemos además filtrar por tipologia, grupo muscular y ordenar por fecha o nombre con query strings
+- **GET / training** Listar todos los entrenamientos, podemos además filtrar por tipologia, grupo muscular y ordenar por fecha, nombre o numero de likes con query strings
 - **GET / training/:idtraining** Obtener entrenamiento por Id
 
 - FAVORITOS
-- **POST /fav/:idtraining** Dar favorito a un entrenamientoo a través de su Id
-- **DELETE /fav/:idtraining** Eliminar de favorito a un entrenamientoo a través de su Id
+- **POST /fav/:idtraining** Dar favorito a un entrenamiento a través de su Id
+- **DELETE /fav/:idtraining** Eliminar de favorito a un entrenamiento a través de su Id
 - **GET /fav** Listar entrenamientos favoritos de un usuario
 
 - LIKE
-- **POST /like/:idtraining** Dar Like a un entrenamientoo a través de su Id
-- **DELETE /like/:idtraining** Eliminar Like a un entrenamientoo a través de su Id
+- **POST /like/:idtraining** Dar Like a un entrenamiento a través de su Id
+- **DELETE /like/:idtraining** Eliminar Like a un entrenamiento a través de su Id
 - **GET /sortLikes** Ordenar entrenamientos por numero de likes.
 
 ## Autores

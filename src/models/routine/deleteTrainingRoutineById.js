@@ -1,11 +1,13 @@
 import pool from '../../db/pool.js';
 import { generateError } from '../../helpers/index.js';
 
-
 const deleteTrainingRoutineById = async (id) => {
   try {
-
-    await pool.query(`DELETE FROM routine_training WHERE id = ?;`, [id]);
+    await pool.query(
+      `
+    DELETE FROM routine_training WHERE id = ?;`,
+      [id]
+    );
 
     return {
       status: 200,

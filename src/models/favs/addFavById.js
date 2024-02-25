@@ -4,7 +4,7 @@ import { generateError } from '../../helpers/index.js';
 const addFavById = async (id_user, id_training) => {
   try {
     const fav = await pool.query(
-      'INSERT INTO favorites ( id_user, id_training ) VALUES (?, ?);',
+      `INSERT INTO favorites ( id_user, id_training ) VALUES (?, ?)`,
       [id_user, id_training]
     );
 

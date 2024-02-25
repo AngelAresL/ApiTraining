@@ -9,7 +9,10 @@ const insertTraining = async ({
   loggedUserId,
 }) => {
   const [{ insertId }] = await pool.query(
-    'INSERT INTO training (name, description, photo, typology, muscle_group, id_user) VALUES (?, ?, ?, ?, ?, ?);',
+    `
+  INSERT INTO 
+  training (name, description, photo, typology, muscle_group, id_user) 
+  VALUES (?, ?, ?, ?, ?, ?)`,
     [name, description, photoTrainingName, typology, muscle_group, loggedUserId]
   );
 

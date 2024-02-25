@@ -4,7 +4,7 @@ import { generateError } from '../../helpers/index.js';
 const removeFavById = async (id_user, id_training) => {
   try {
     await pool.query(
-      'DELETE FROM favorites WHERE id_user = ? AND id_training = ?',
+      `DELETE FROM favorites WHERE id_user = ? AND id_training = ?`,
       [id_user, id_training]
     );
   } catch (error) {

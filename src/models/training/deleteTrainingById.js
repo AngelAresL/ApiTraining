@@ -2,7 +2,7 @@ import pool from '../../db/pool.js';
 import { generateError } from '../../helpers/index.js';
 const deleteTrainingById = async (id) => {
   try {
-    const query = 'DELETE FROM training WHERE id = ?';
+    const query = `DELETE FROM training WHERE id = ?`;
     await pool.query(query, [id]);
 
     return {

@@ -4,7 +4,8 @@ import { generateError } from '../../helpers/index.js';
 const addSeriesAndReps = async (reps, series, idRoutine, idTraining) => {
   try {
     const result = await pool.query(
-      'UPDATE routine_training SET reps = ? ,series= ? WHERE id_routine= ? AND id_training = ?',
+      `
+      UPDATE routine_training SET reps = ? ,series= ? WHERE id_routine= ? AND id_training = ?`,
       [reps, series, idRoutine, idTraining]
     );
 

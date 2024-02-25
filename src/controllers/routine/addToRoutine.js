@@ -2,7 +2,6 @@ import generateError from '../../helpers/generateError.js';
 import validateInt from '../../helpers/regexInt.js';
 import {
   addTrainingToRoutine,
-  checkTrainingRoutine,
   selectTrainingToRoutine,
 } from '../../models/routine/index.js';
 
