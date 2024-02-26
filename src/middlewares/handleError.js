@@ -1,5 +1,5 @@
 // Creamos el middleware de manejo de errores.
-const handleError = (error, req, res, next) => {
+const handleError = (error, req, res) => {
 console.log(error);
   res
     .status(error?.httpStatus || 500)

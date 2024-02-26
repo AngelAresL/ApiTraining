@@ -16,15 +16,7 @@ const validateJoiTraining = async ({
           400
         );
       }),
-    // description: Joi.string()
-    //   .max(200)
-    //   .required()
-    //   .error(() => {
-    //     generateError(
-    //       'La descripción es obligatoria y tiene un máximo de 200 caracteres.',
-    //       400
-    //     );
-    //   }),
+
     typology: Joi.string()
       .max(50)
       .required()
@@ -44,7 +36,7 @@ const validateJoiTraining = async ({
         );
       }),
   });
-  const validation = schema.validate({
+  schema.validate({
     name,
     typology,
     muscle_group,
