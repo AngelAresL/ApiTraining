@@ -11,7 +11,10 @@ const rolToAdmin = async (req, res, next) => {
       generateError('Los datos no son correctos.', 401);
     }
     if (userDb.rol === 'admin') {
-      generateError('El usuario selecionado ya es administrador', 401);
+      generateError(
+        'El usuario seleccionado ya tiene el rol "administrador"',
+        401
+      );
     }
 
     // Inserto el usuario en la base de datos
